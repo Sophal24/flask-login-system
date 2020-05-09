@@ -1,8 +1,8 @@
-from flask import Flask, render_template, redirect, url_for
+from flask import Flask, render_template, redirect, url_for, flash, session
 from flask_bootstrap import Bootstrap
 from flask_wtf import FlaskForm 
 from wtforms import StringField, PasswordField, BooleanField
-from wtforms.validators import InputRequired, Email, Length
+from wtforms.validators import InputRequired, Email, Length, EqualTo
 from flask_sqlalchemy  import SQLAlchemy
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user, current_user
@@ -38,6 +38,7 @@ class RegisterForm(FlaskForm):
     email = StringField('Email', validators=[InputRequired(), Email(message='Invalid email'), Length(max=50)])
     username = StringField('Username', validators=[InputRequired(), Length(min=4, max=15)])
     password = PasswordField('Password', validators=[InputRequired(), Length(min=8, max=80)])
+    password_confirm = PasswordField('Confirm password*', validators=[InputRequired(), EqualTo('password')])
 
 
 @app.route('/')
@@ -46,8 +47,8 @@ def index():
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
+        
     form = LoginForm()
-
     if form.validate_on_submit():
         user = User.query.filter_by(username=form.username.data).first()
         if user:
@@ -62,17 +63,15 @@ def login():
 
 @app.route('/signup', methods=['GET', 'POST'])
 def signup():
-    form = RegisterForm()
 
+    form = RegisterForm()
     if form.validate_on_submit():
-        hashed_password = generate_password_hash(form.password.data, method='sha256')
-        new_user = User(username=form.username.data, email=form.email.data, password=hashed_password)
+        hashed_password = generate_password_hash(form.password.data, method='sha256') #hash password
+        new_user = User(username=form.username.data, email=form.email.data, password=hashed_password) #put all data from form in to Class User
+        
         db.session.add(new_user)
         db.session.commit()
-
-        return redirect(url_for('login'))
-        #return '<h1>' + form.username.data + ' ' + form.email.data + ' ' + form.password.data + '</h1>'
-
+        return redirect(url_for('dashboard'))
     return render_template('signup.html', form=form, signup=True)
 
 @app.route('/dashboard')
@@ -84,6 +83,7 @@ def dashboard():
 @login_required
 def logout():
     logout_user()
+    # session.pop('login', None)
     return redirect(url_for('index'))
 
 if __name__ == '__main__':

@@ -27,6 +27,7 @@ Login
             <li><a class="nav-link {% if home %} active {% endif %}" href="{{ url_for('index') }}">Home</a></li>
             <li><a class="nav-link {% if login %} active {% endif %}" href="{{ url_for('login') }}">Login</a></li>
             <li><a class="nav-link {% if signup %} active {% endif %}" href="{{ url_for('signup') }}">Sign Up</a></li>
+            <li class="nav-item"><a class="nav-link " href="{{ url_for('dashboard') }}">Dashboard</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
@@ -41,7 +42,8 @@ Login
         {{ wtf.form_field(form.password) }}
         {{ wtf.form_field(form.remember) }}
         <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-        <a href="signup" style="text-align: center; margin-top: 100px;" class="form-signin-heading">Register?</a>
+        <br>
+        <a href="signup" style="text-align: center;" class="form-signin-heading">Register?</a>
       </form>
       
     </div> <!-- /container -->
