@@ -42,12 +42,15 @@ class RegisterForm(FlaskForm):
 
 
 @app.route('/')
+@login_required
 def index():
     return render_template('index.html', home=True)
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
-        
+    if current_user.is_authenticated:
+        # return current_app.login_manager.unauthorized()
+        return redirect(url_for('dashboard'))
     form = LoginForm()
     if form.validate_on_submit():
         user = User.query.filter_by(username=form.username.data).first()
@@ -63,7 +66,9 @@ def login():
 
 @app.route('/signup', methods=['GET', 'POST'])
 def signup():
-
+    if current_user.is_authenticated:
+        # return current_app.login_manager.unauthorized()
+        return redirect(url_for('dashboard'))
     form = RegisterForm()
     if form.validate_on_submit():
         hashed_password = generate_password_hash(form.password.data, method='sha256') #hash password
