@@ -1,7 +1,7 @@
 {% extends "bootstrap/base.html" %}
 
 {% block title %}
-Dashboard
+Lexicon Mangement
 {% endblock %}
 
 {% block styles %}
@@ -43,9 +43,9 @@ Dashboard
           <ul class="nav nav-sidebar" style="font-size: 14px; font-weight: bold;">
             <li class="{% if dashboard %} active {%endif%}"><a href="{{ url_for('dashboard') }}"><i class="fas fa-laptop-house"></i> Overview <span class="sr-only">(current)</span></a></li>
             <li class="{% if lexicon %} active {%endif%}"><a href="{{ url_for('lexicon') }}"><i class="fas fa-list-ol"></i>  Lexicon Managment</a></li>
-            <li class="{% if languange %} active {%endif%}"><a href="#"><i class="fas fa-language"></i>  Lanuage Model Managment</a></li>
-            <li class="{% if speech %} active {%endif%}"><a href="#"><i class="fas fa-microphone"></i>  Speech Management</a></li>
-            <li class="{% if decoding %} active {%endif%}"><a href="#"><i class="fas fa-history"></i>  Decoding History</a></li>
+            <li class="{% if language %} active {%endif%}"><a href="{{ url_for('language') }}"><i class="fas fa-language"></i>  Lanuage Model Managment</a></li>
+            <li class="{% if speech %} active {%endif%}"><a href="{{ url_for('speech') }}"><i class="fas fa-microphone"></i>  Speech Management</a></li>
+            <li class="{% if decoding %} active {%endif%}"><a href="{{ url_for('decoding') }}"><i class="fas fa-history"></i>  Decoding History</a></li>
           </ul>
           <h3>Offline Decoding API + Streaming</h3>
           <!-- <ul class="nav nav-sidebar">
@@ -61,37 +61,15 @@ Dashboard
           <h1 class="page-header">Welcome Admin, {{ name }}</h1>
       
           <div class="row placeholders">
-            <a href="{{ url_for('lexicon') }}">
-              <div class="col-xs-6 col-sm-3 placeholder">
-                <i class="fas fa-list-ol" style="font-size: 140px;"></i>
-                <h4>Lexicon Managment</h4>
-                <span class="text-muted badge badge-success">IoT</span>
-              </div>
-            </a>
-            <a href="{{ url_for('language') }}">
-              <div class="col-xs-6 col-sm-3 placeholder">
-                <i class="fas fa-language" style="font-size: 140px;"></i>
-                <h4>Lanuage Model Managment</h4>
-                <span class="text-muted badge badge-success">IoT</span>
-              </div>
-            </a>
-            <a href="{{ url_for('speech') }}">
-              <div class="col-xs-6 col-sm-3 placeholder">
-                <i class="fas fa-microphone" style="font-size: 140px;"></i>
-                <h4>Speech Management</h4>
-                <span class="text-muted badge badge-success">IoT</span>
-              </div>
-            </a>
-            <a href="{{ url_for('decoding') }}">
-              <div class="col-xs-6 col-sm-3 placeholder">
-                <i class="fas fa-history" style="font-size: 140px;"></i>
-                <h4>Decoding History</h4>
-                <span class="text-muted badge badge-success">IoT</span>
-              </div>
-            </a>
+            <div class="col-xs-6 col-sm-3 placeholder">
+              <!-- <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail"> -->
+              <i class="fas fa-list-ol" style="font-size: 120px;"></i>
+              <h4>Lexicon Managment</h4>
+              <span class="text-muted">IoT</span>
+            </div>
           </div>
 
-          <h2 class="sub-header">Section title</h2>
+          <h2 class="sub-header">Lexicon Management</h2>
           <div class="table-responsive">
             <table class="table table-striped">
               <thead>
@@ -139,83 +117,7 @@ Dashboard
                   <td>Sed</td>
                   <td>nisi</td>
                 </tr>
-                <tr>
-                  <td>1,005</td>
-                  <td>Nulla</td>
-                  <td>quis</td>
-                  <td>sem</td>
-                  <td>at</td>
-                </tr>
-                <tr>
-                  <td>1,006</td>
-                  <td>nibh</td>
-                  <td>elementum</td>
-                  <td>imperdiet</td>
-                  <td>Duis</td>
-                </tr>
-                <tr>
-                  <td>1,007</td>
-                  <td>sagittis</td>
-                  <td>ipsum</td>
-                  <td>Praesent</td>
-                  <td>mauris</td>
-                </tr>
-                <tr>
-                  <td>1,008</td>
-                  <td>Fusce</td>
-                  <td>nec</td>
-                  <td>tellus</td>
-                  <td>sed</td>
-                </tr>
-                <tr>
-                  <td>1,009</td>
-                  <td>augue</td>
-                  <td>semper</td>
-                  <td>porta</td>
-                  <td>Mauris</td>
-                </tr>
-                <tr>
-                  <td>1,010</td>
-                  <td>massa</td>
-                  <td>Vestibulum</td>
-                  <td>lacinia</td>
-                  <td>arcu</td>
-                </tr>
-                <tr>
-                  <td>1,011</td>
-                  <td>eget</td>
-                  <td>nulla</td>
-                  <td>Class</td>
-                  <td>aptent</td>
-                </tr>
-                <tr>
-                  <td>1,012</td>
-                  <td>taciti</td>
-                  <td>sociosqu</td>
-                  <td>ad</td>
-                  <td>litora</td>
-                </tr>
-                <tr>
-                  <td>1,013</td>
-                  <td>torquent</td>
-                  <td>per</td>
-                  <td>conubia</td>
-                  <td>nostra</td>
-                </tr>
-                <tr>
-                  <td>1,014</td>
-                  <td>per</td>
-                  <td>inceptos</td>
-                  <td>himenaeos</td>
-                  <td>Curabitur</td>
-                </tr>
-                <tr>
-                  <td>1,015</td>
-                  <td>sodales</td>
-                  <td>ligula</td>
-                  <td>in</td>
-                  <td>libero</td>
-                </tr>
+                
               </tbody>
             </table>
           </div>

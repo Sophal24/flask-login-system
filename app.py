@@ -9,9 +9,9 @@ from flask_login import LoginManager, UserMixin, login_user, login_required, log
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'Thisissupposedtobesecret!'
-# app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:24071999@localhost/prettyprinted'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://vqfhxxncclgtkm:87c1e6539b84ba12105a17cfc6733cb2ddb9d7b902c896ca73791f6c9ab17f2d@ec2-3-91-139-25.compute-1.amazonaws.com:5432/d6mglfsgk46cmg'
-# app.config['SQLALCHEMY_TRACK_MODIFICATIONS']=False
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:24071999@localhost/prettyprinted'
+# app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://vqfhxxncclgtkm:87c1e6539b84ba12105a17cfc6733cb2ddb9d7b902c896ca73791f6c9ab17f2d@ec2-3-91-139-25.compute-1.amazonaws.com:5432/d6mglfsgk46cmg'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS']=False
 
 bootstrap = Bootstrap(app)
 db = SQLAlchemy(app)
@@ -82,7 +82,7 @@ def signup():
 @app.route('/dashboard')
 @login_required
 def dashboard():
-    return render_template('dashboard.html', name=current_user.username)
+    return render_template('dashboard.html', name=current_user.username, dashboard=True)
 
 @app.route('/logout')
 @login_required
@@ -90,6 +90,30 @@ def logout():
     logout_user()
     # session.pop('login', None)
     return redirect(url_for('index'))
+
+
+
+@app.route('/lexicon')
+@login_required
+def lexicon():
+    return render_template('lexicon.html', lexicon=True, name=current_user.username)
+
+@app.route('/language')
+@login_required
+def language():
+    return render_template('language.html', language=True, name=current_user.username)
+
+@app.route('/speech')
+@login_required
+def speech():
+    return render_template('speech.html', speech=True, name=current_user.username)
+
+@app.route('/decoding')
+@login_required
+def decoding():
+    return render_template('decoding.html', decoding=True, name=current_user.username)
+
+
 
 if __name__ == '__main__':
     app.run(debug=True)
