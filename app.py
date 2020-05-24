@@ -61,7 +61,7 @@ class Lexicon(db.Model):
 @login_required
 def insertlexicon():
     word = request.form['word']
-    pronounciation = request.form['prounounciation']
+    pronounciation = request.form['pronounciation']
     utteranceid = request.form['utteranceid']
     lexicon = Lexicon(word,pronounciation,utteranceid)
 
