@@ -1,7 +1,8 @@
-from flask import Flask, render_template, redirect, url_for, flash, session
+from flask import Flask, render_template, redirect, url_for, flash, session,request, flash
+# from flask_bootstrap import Bootstrap
 from flask_bootstrap import Bootstrap
 from flask_wtf import FlaskForm 
-from wtforms import StringField, PasswordField, BooleanField
+from wtforms import StringField, PasswordField, BooleanField, SubmitField
 from wtforms.validators import InputRequired, Email, Length, EqualTo
 from flask_sqlalchemy  import SQLAlchemy
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -19,6 +20,7 @@ login_manager = LoginManager()
 login_manager.init_app(app)
 login_manager.login_view = 'login'
 
+# User Model
 class User(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(15), unique=True)
@@ -29,6 +31,7 @@ class User(UserMixin, db.Model):
 def load_user(user_id):
     return User.query.get(int(user_id))
 
+# Validator of Login and Signup Form
 class LoginForm(FlaskForm):
     username = StringField('Username', validators=[InputRequired(), Length(min=4, max=15)])
     password = PasswordField('Password', validators=[InputRequired(), Length(min=8, max=80)])
@@ -40,8 +43,78 @@ class RegisterForm(FlaskForm):
     password = PasswordField('Password', validators=[InputRequired(), Length(min=8, max=80)])
     password_confirm = PasswordField('Confirm password*', validators=[InputRequired(), EqualTo('password')])
 
+# Model for Lexicon
+class Lexicon(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    word = db.Column(db.String(100), unique=True)
+    pronounciation = db.Column(db.String(100), unique=True)
+    utteranceid = db.Column(db.String(100), unique=True)
+
+    def __init__(self, word, pronounciation, utteranceid):
+        self.word = word
+        self.pronounciation = pronounciation
+        self.utteranceid = utteranceid
+
+# ===============CRUD Lexicon===============
+# Add Lexicon
+@app.route('/insertlexicon', methods=['POST'])
+@login_required
+def insertlexicon():
+    word = request.form['word']
+    pronounciation = request.form['prounounciation']
+    utteranceid = request.form['utteranceid']
+    lexicon = Lexicon(word,pronounciation,utteranceid)
+
+    exist1 = Lexicon.query.filter_by(word=word).first()
+    exist2 = Lexicon.query.filter_by(pronounciation=pronounciation).first()
+    exist3 = Lexicon.query.filter_by(utteranceid=utteranceid).first()
+    
+    if exist1 or exist2 or exist3:
+        flash("This lexicon already exists!", "warning")
+        return redirect(url_for('lexicon'))
+
+    db.session.add(lexicon)
+    db.session.commit()
+    flash("New Lexicon has just been added successfully.", "success")
+    return redirect(url_for('lexicon'))
+
+# Update Lexicon
+@app.route('/updatelexicon', methods=['Get', 'POST'])
+@login_required
+def updatelexicon():
+    if request.method == 'POST':
+        update = Lexicon.query.get(request.form.get('id'))
+        
+        update.word = request.form['word']
+        update.pronunciation = request.form['pronounciation']
+        update.utteranceid = request.form['utteranceid']
+
+        db.session.commit()
+        flash("Lexicon was updated successfully !!!", "success")
+        return redirect(url_for('lexicon'))
+    else:
+        flash("Failed to update Lexicon !!!", "warning")
+        return redirect(url_for('lexicon'))
+
+# Delete a Lexicon
+@app.route('/delete/<int:id>')
+@login_required
+def delete(id):
+    lexiconDelete = Lexicon.query.get_or_404(id)
+    try:
+        db.session.delete(lexiconDelete)
+        db.session.commit()
+        flash("Lexicon was deleted successfully !!!","success")
+        return redirect(url_for('lexicon'))
+    except:
+        flash("There was a problem delete lexicon !!!","warning")
+        return redirect(url_for('lexicon'))
+
+# ===============End CRUD Lexicon===============
+
 
 @app.route('/')
+@app.route('/index')
 # @login_required
 def index():
     return render_template('index.html', home=True)
@@ -96,22 +169,30 @@ def logout():
 @app.route('/lexicon')
 @login_required
 def lexicon():
-    return render_template('lexicon.html', lexicon=True, name=current_user.username)
+    lexiconall = Lexicon.query.all()
+    count = Lexicon.query.count()
+    return render_template('lexicon.html', lexicon=True, lexiconall=lexiconall, count=count)
 
 @app.route('/language')
 @login_required
 def language():
-    return render_template('language.html', language=True, name=current_user.username)
+    return render_template('language.html', language=True)
 
 @app.route('/speech')
 @login_required
 def speech():
-    return render_template('speech.html', speech=True, name=current_user.username)
+    return render_template('speech.html', speech=True)
 
 @app.route('/decoding')
 @login_required
 def decoding():
-    return render_template('decoding.html', decoding=True, name=current_user.username)
+    return render_template('decoding.html', decoding=True)
+
+
+# @app.route('/base')
+# @login_required
+# def base():
+#     return render_template('base.html', decoding=True)
 
 
 

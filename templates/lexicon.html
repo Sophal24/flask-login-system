@@ -1,127 +1,116 @@
-{% extends "bootstrap/base.html" %}
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
 
 {% block title %}
 Lexicon Mangement
 {% endblock %}
 
-{% block styles %}
-{{super()}}
-<link rel="stylesheet" href="{{url_for('.static', filename='dashboard.css')}}">
-<script src="https://kit.fontawesome.com/ef323b5b2a.js" crossorigin="anonymous"></script>
-{% endblock %}
-
 {% block content %}
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container-fluid">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+      {% for category, message in messages %}
+        <div class="alert alert-{{category}} alert-dismissible fade show" role="alert" style="height: 50px; margin-top: -25px;">
+          <h5>{{ message }}</h5>
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
           </button>
-          <a class="navbar-brand" href="{{ url_for('dashboard') }}"><i class="fas fa-dice-d20"></i> Khmer ASR for IOT</a>
         </div>
-        <div id="navbar" class="navbar-collapse collapse">
-          <ul class="nav navbar-nav navbar-right">
-            <li><a href="#">Dashboard</a></li>
-            <li><a href="#">Settings</a></li>
-            <li><a href="#">Profile</a></li>
-            <li><a href="{{ url_for('logout') }}"><i class="fas fa-sign-out-alt"></i> Log Out</a></li>
-          </ul>
-          <form class="navbar-form navbar-right">
-            <input type="text" class="form-control" placeholder="Search...">
-          </form>
-        </div>
-      </div>
-    </nav>
 
+      {% endfor %}
+    {% endif %}
+    {% endwith %}
     <div class="container-fluid">
       <div class="row">
-        <div class="col-sm-3 col-md-2 sidebar">
-          <h3>Data Managment</h3>
-          <ul class="nav nav-sidebar" style="font-size: 14px; font-weight: bold;">
-            <li class="{% if dashboard %} active {%endif%}"><a href="{{ url_for('dashboard') }}"><i class="fas fa-laptop-house"></i> Overview <span class="sr-only">(current)</span></a></li>
-            <li class="{% if lexicon %} active {%endif%}"><a href="{{ url_for('lexicon') }}"><i class="fas fa-list-ol"></i>  Lexicon Managment</a></li>
-            <li class="{% if language %} active {%endif%}"><a href="{{ url_for('language') }}"><i class="fas fa-language"></i>  Lanuage Model Managment</a></li>
-            <li class="{% if speech %} active {%endif%}"><a href="{{ url_for('speech') }}"><i class="fas fa-microphone"></i>  Speech Management</a></li>
-            <li class="{% if decoding %} active {%endif%}"><a href="{{ url_for('decoding') }}"><i class="fas fa-history"></i>  Decoding History</a></li>
-          </ul>
-          <h3>Offline Decoding API + Streaming</h3>
-          <!-- <ul class="nav nav-sidebar">
-            <li><a href="">Nav item</a></li>
-            <li><a href="">Nav item again</a></li>
-            <li><a href="">One more nav</a></li>
-            <li><a href="">Another nav item</a></li>
-            <li><a href="">More navigation</a></li>
-          </ul> -->
-          
-        </div>
-        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-          <h1 class="page-header">Welcome Admin, {{ name }}</h1>
-      
-          <div class="row placeholders">
-            <div class="col-xs-6 col-sm-3 placeholder">
-              <!-- <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail"> -->
-              <i class="fas fa-list-ol" style="font-size: 120px;"></i>
-              <h4>Lexicon Managment</h4>
-              <span class="text-muted">IoT</span>
-            </div>
-          </div>
 
-          <h2 class="sub-header">Lexicon Management</h2>
-          <div class="table-responsive">
-            <table class="table table-striped">
-              <thead>
-                <tr>
-                  <th>#</th>
-                  <th>Header</th>
-                  <th>Header</th>
-                  <th>Header</th>
-                  <th>Header</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>1,001</td>
-                  <td>Lorem</td>
-                  <td>ipsum</td>
-                  <td>dolor</td>
-                  <td>sit</td>
-                </tr>
-                <tr>
-                  <td>1,002</td>
-                  <td>amet</td>
-                  <td>consectetur</td>
-                  <td>adipiscing</td>
-                  <td>elit</td>
-                </tr>
-                <tr>
-                  <td>1,003</td>
-                  <td>Integer</td>
-                  <td>nec</td>
-                  <td>odio</td>
-                  <td>Praesent</td>
-                </tr>
-                <tr>
-                  <td>1,003</td>
-                  <td>libero</td>
-                  <td>Sed</td>
-                  <td>cursus</td>
-                  <td>ante</td>
-                </tr>
-                <tr>
-                  <td>1,004</td>
-                  <td>dapibus</td>
-                  <td>diam</td>
-                  <td>Sed</td>
-                  <td>nisi</td>
-                </tr>
-                
-              </tbody>
-            </table>
+        <!-- Collapse - add new lexicon -->
+        <div class="container" style="margin-top: -15px;">
+            <h1 class="sub-header">Lexicon Management ({{ count }}) <button type="button" class="btn btn-success float-right btn-sm" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample"><i class="fas fa-plus"></i> Add Lexicon</button></h1>
+        </div>
+        <div class="collapse" id="collapseExample">
+          <div class="container">
+            <form class="form-group" action="/insertlexicon" method="POST">
+
+              <b>Word: </b> <input type="text" name="word" class="form-control" placeholder="Ex: ទៅមុខ" required>
+              <b>Pronounciation: </b> <input type="text" name="pronounciation" class="form-control" placeholder="Ex: t av m u k" required>
+              <b>Utterance ID: </b> <input type="text" name="utteranceid" class="form-control" placeholder="Ex: 001" required>
+              <input type="submit" class="btn btn-warning btn-sm" style="margin-top: 5px;">
+
+            </form>
+
           </div>
         </div>
+        <!-- end collapse -->
+
+        <br><br>
+
+        <!-- Table to show all lexicon from database -->
+        <div class="table-responsive container">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th></th>
+                <th>ID</th>
+                <th>Word</th>
+                <th>Pronounciation</th>
+                <th>Utterance ID</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+
+              {% for lexicon in lexiconall %}
+              <tr>
+                <td><input type="checkbox"></td>
+                <td>{{ lexicon.id }}</td>
+                <td>{{ lexicon.word }}</td>
+                <td>{{ lexicon.pronounciation }}</td>
+                <td>{{ lexicon.utteranceid }}</td>
+                <td>
+                  <a href="/updatelexicon/{{lexicon.id}}" data-toggle="modal" data-target="#exampleModalCenter{{lexicon.id}}">
+                    <i class="far fa-edit" style="margin-right: 15px; color: green;"></i>   
+                  </a>
+
+                  <a href="/delete/{{lexicon.id}}" onclick="return confirm('Are sure to Delete?')">
+                    <i class="fas fa-trash-alt" style="color: red;"></i>
+                  </a>
+        
+                </td>
+              </tr>
+              
+              <!-- Modal -->
+              <div class="modal fade" id="exampleModalCenter{{lexicon.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLongTitle">Update Lexicon</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      <form class="form-group" action="{{ url_for('updatelexicon') }}" method="POST">
+                        <input type="hidden" name="id" value="{{lexicon.id}}">
+                        <b>Word: </b> <input type="text" name="word" class="form-control" value="{{lexicon.word}}">
+                        <b>Pronounciation: </b> <input type="text" name="pronounciation" class="form-control" value="{{lexicon.pronounciation}}">
+                        <b>Utterance ID: </b> <input type="text" name="utteranceid" class="form-control" value="{{lexicon.utteranceid}}">
+                        <button type="submit" class="btn btn-warning btn-sm" style="margin-top: 5px;">Update</button>
+          
+                      </form>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- end Modal -->
+              {% endfor %}
+          
+            </tbody>
+          </table>
+        </div>
+
       </div>
     </div>
+
 {% endblock %}
