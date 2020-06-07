@@ -1,5 +1,7 @@
-from flask import Flask, render_template, redirect, url_for, flash, session,request, flash
-# from flask_bootstrap import Bootstrap
+import os
+import requests
+from flask import Flask, render_template, redirect, url_for, flash, session,request, flash, jsonify
+from flask import send_file # help to download file, 
 from flask_bootstrap import Bootstrap
 from flask_wtf import FlaskForm 
 from wtforms import StringField, PasswordField, BooleanField, SubmitField
@@ -7,12 +9,22 @@ from wtforms.validators import InputRequired, Email, Length, EqualTo
 from flask_sqlalchemy  import SQLAlchemy
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user, current_user
+from io import BytesIO # help to downlaod file
+
+from werkzeug.utils import secure_filename
+UPLOAD_FOLDER = '/Volumes/HDD/WEB/Flask/building_user_login_system/finish/static/sound'
+# ALLOWED_EXTENSIONS = {'wav','mp3'}
+ALLOWED_EXTENSIONS = {'txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif', 'wav','mp3'}
+
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'Thisissupposedtobesecret!'
-# app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:24071999@localhost/prettyprinted'
+# app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:24071999@localhost/prettyprinted' #posgresql+username+password=@localhost/database
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://vqfhxxncclgtkm:87c1e6539b84ba12105a17cfc6733cb2ddb9d7b902c896ca73791f6c9ab17f2d@ec2-3-91-139-25.compute-1.amazonaws.com:5432/d6mglfsgk46cmg'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS']=False
+
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+
 
 bootstrap = Bootstrap(app)
 db = SQLAlchemy(app)
@@ -31,17 +43,21 @@ class User(UserMixin, db.Model):
 def load_user(user_id):
     return User.query.get(int(user_id))
 
-# Validator of Login and Signup Form
+# Validator of Login Form
 class LoginForm(FlaskForm):
     username = StringField('Username', validators=[InputRequired(), Length(min=4, max=15)])
     password = PasswordField('Password', validators=[InputRequired(), Length(min=8, max=80)])
     remember = BooleanField('Remember me')
 
+# Validator of Signup Form
 class RegisterForm(FlaskForm):
     email = StringField('Email', validators=[InputRequired(), Email(message='Invalid email'), Length(max=50)])
     username = StringField('Username', validators=[InputRequired(), Length(min=4, max=15)])
     password = PasswordField('Password', validators=[InputRequired(), Length(min=8, max=80)])
     password_confirm = PasswordField('Confirm password*', validators=[InputRequired(), EqualTo('password')])
+
+
+
 
 # Model for Lexicon
 class Lexicon(db.Model):
@@ -110,7 +126,158 @@ def delete(id):
         flash("There was a problem delete lexicon !!!","warning")
         return redirect(url_for('lexicon'))
 
-# ===============End CRUD Lexicon===============
+# ===============x End CRUD Lexicon x===============
+
+
+
+
+
+# Model for Language Model Management
+class Language(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    word = db.Column(db.String, unique=True)
+    pronounciation = db.Column(db.String, unique=True)
+    
+    def __init__(self, word, pronounciation):
+        self.word = word
+        self.pronounciation = pronounciation
+
+# ================ CRUD on LMM ===================
+@app.route('/insertlanguage', methods=["POST"])
+@login_required
+def insertlanguage():
+    word = request.form['word']
+    pronounciation = request.form['pronounciation']
+
+    language = Language(word,pronounciation)
+
+    exist1 = Language.query.filter_by(word=word).first()
+    exist2 = Language.query.filter_by(pronounciation=pronounciation).first()
+    
+    if exist1 or exist2:
+        flash("This Language already exists!", "warning")
+        return redirect(url_for('language'))
+
+    db.session.add(language)
+    db.session.commit()
+    flash("New Word has just been added successfully.", "success")
+    return redirect(url_for('language'))
+
+
+
+# Update Lexicon
+@app.route('/updatelang', methods=['Get', 'POST'])
+@login_required
+def updatelang():
+    if request.method == 'POST':
+        updatelang = Language.query.get(request.form.get('id'))
+        
+        updatelang.word = request.form['word']
+        updatelang.pronounciation = request.form['pronounciation']
+
+        db.session.commit()
+        flash("Word was updated successfully !!!", "success")
+        return redirect(url_for('language'))
+    else:
+        flash("Failed to update Lexicon !!!", "warning")
+        return redirect(url_for('language'))
+
+
+# Delete a Language Model
+@app.route('/deletelang/<int:id>')
+@login_required
+def deletelang(id):
+    langDelete = Language.query.get_or_404(id)
+    try:
+        db.session.delete(langDelete)
+        db.session.commit()
+        flash("New word was deleted successfully !!!", "success")
+        return redirect(url_for('language'))
+    except:
+        flash("There was a problem delete word !!!", "warning")
+        return redirect(url_for('language'))
+
+# ================x End CRUD on LMM x================
+
+
+class VoiceFile(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    filename = db.Column(db.String(300))
+    data = db.Column(db.LargeBinary)
+        
+    def __init__(self, filename, data):
+        self.filename = filename
+        self.data = data
+
+# ================ Speech management =================
+# upload voce file
+@app.route('/uploadvoice', methods=["POST"])
+@login_required
+def uploadvoice():
+    file = request.files['inputFile']
+    newFile = VoiceFile(filename=file.filename, data=file.read())
+    db.session.add(newFile)
+    db.session.commit()
+
+    return "Saved" + file.filename + " to the databasebase"
+    # return jsonify(message='Audio was saved to database.'), 200
+
+
+
+def allowed_file(filename):
+    return '.' in filename and \
+           filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
+
+@app.route('/upload', methods=['GET', 'POST'])
+def upload_file():
+    if request.method == 'POST':
+        # check if the post request has the file part
+        if 'file' not in request.files:
+            flash('No file part')
+            return redirect(request.url)
+        file = request.files['file']
+        # if user does not select file, browser also
+        # submit an empty part without filename
+        if file.filename == '':
+            flash('No selected file')
+            return redirect(request.url)
+
+        if file and allowed_file(file.filename):
+            filename = secure_filename(file.filename)
+            file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+            # return redirect(url_for('uploaded_file', filename=filename))
+
+            flash("File saved successfully", "success")
+            return redirect(url_for('speech'))
+        else:
+            flash("File Extesion is not allowed.", "danger")
+            return redirect(url_for('speech'))
+
+## upload voice API
+@app.route('/uploadapi', methods=['POST'])
+def uploadapi():
+    if request.method == 'POST':
+        # check if the post request has the file part
+        if 'file' not in request.files:
+            return jsonify(message="No file part", staus="404"), 404
+        file = request.files['file']
+        # if user does not select file, browser also
+        # submit an empty part without filename
+        if file.filename == '':
+            return jsonify(message="No selected File.", status="404"), 404
+
+        if file and allowed_file(file.filename):
+            filename = secure_filename(file.filename)
+            file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+            # return redirect(url_for('uploaded_file', filename=filename))
+            return jsonify(message="File Saved Successfully.", status="200"), 200
+
+        else:
+            return jsonify(message="File Extesion is not allowed.", status="404"), 404
+
+
+# ==============xEnd Speech management x==============
+
 
 
 @app.route('/')
@@ -173,15 +340,21 @@ def lexicon():
     count = Lexicon.query.count()
     return render_template('lexicon.html', lexicon=True, lexiconall=lexiconall, count=count)
 
+
 @app.route('/language')
 @login_required
 def language():
-    return render_template('language.html', language=True)
+    languageall = Language.query.all()
+    count = Language.query.count()
+    return render_template('language.html', language=True, languageall=languageall, count=count)
+
 
 @app.route('/speech')
 @login_required
 def speech():
-    return render_template('speech.html', speech=True)
+    allfile = VoiceFile.query.all()
+    return render_template('speech.html', speech=True, allfile=allfile)
+
 
 @app.route('/decoding')
 @login_required

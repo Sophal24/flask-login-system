@@ -6,42 +6,119 @@ Lanuage Model Management
 
 {% block content %}
 
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+          {% for category, message in messages %}
+            <div class="alert alert-{{category}} alert-dismissible fade show" role="alert" style="height: 50px; margin-top: -25px;">
+              <h5>{{ message }}</h5>
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+
+          {% endfor %}
+        {% endif %}
+    {% endwith %}
+
     <div class="container-fluid">
       <div class="row">
-        <!-- <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main"> -->
-          <!-- <h1 class="page-header">Welcome Admin, {{ name }}</h1> -->
-          <h1>Lanuage Model Management</h1>
-          <div class="table-responsive">
-            <table class="table table-striped">
-              <thead>
-                <tr>
-                  <th>#</th>
-                  <th>Header</th>
-                  <th>Header</th>
-                  <th>Header</th>
-                  <th>Header</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>1,001</td>
-                  <td>Lorem</td>
-                  <td>ipsum</td>
-                  <td>dolor</td>
-                  <td>sit</td>
-                </tr>
-                <tr>
-                  <td>1,002</td>
-                  <td>amet</td>
-                  <td>consectetur</td>
-                  <td>adipiscing</td>
-                  <td>elit</td>
-                </tr>
-                
-              </tbody>
-            </table>
+
+        <div class="container" style="margin-top: -15px;">
+          <h1 class="sub-header">Language Model Management <button type="button" class="btn btn-success float-right btn-sm" data-toggle="modal" data-target="#exampleModalCenter"><i class="fas fa-plus"></i> Add New Word</button></h1>
+          <p>Total : {{ count }}</p>
+        </div>
+
+        <!-- Modal for LMM-->
+        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Create Language</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <form class="form-group" action="/insertlanguage" method="POST">
+
+                  <b>New Voice Command: </b> <input type="text" name="word" class="form-control" required>
+                  <b>Pronounciation: </b> <input type="text" name="pronounciation" class="form-control" required>
+                  <!-- <b>Utterance ID: </b> <input type="text" name="utteranceid" class="form-control" required value="N/A"> -->
+                  <input type="submit" class="btn btn-warning btn-sm" style="margin-top: 5px;">
+    
+                </form>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+              </div>
+            </div>
           </div>
-        <!-- </div> -->
+        </div>
+        <!-- end Modal for LMM-->
+
+
+        <!-- Table to show all lexicon from database -->
+        <div class="table-responsive container">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th></th>
+                <th>ID</th>
+                <th>Word</th>
+                <th>Pronounciation</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              
+              {% for language in languageall %}
+              <tr>
+                <td><input type="checkbox"></td>
+                <td>{{ language.id }}</td>
+                <td>{{ language.word }}</td>
+                <td>{{ language.pronounciation }}</td>
+                <td>
+                  <a href="/updatelang/{{language.id}}" data-toggle="modal" data-target="#exampleModalCenter{{language.id}}">
+                    <i class="far fa-edit" style="margin-right: 15px; color: green;"></i>   
+                  </a>
+
+                  <a href="/deletelang/{{language.id}}" onclick="return confirm('Are sure to Delete?')">
+                    <i class="fas fa-trash-alt" style="color: red;"></i>
+                  </a>
+        
+                </td>
+              </tr>
+              
+              <!-- Modal -->
+              <div class="modal fade" id="exampleModalCenter{{language.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLongTitle">Update Language</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      <form class="form-group" action="{{ url_for('updatelang') }}" method="POST">
+                        <input type="hidden" name="id" value="{{language.id}}">
+                        <b>Word: </b> <input type="text" name="word" class="form-control" value="{{language.word}}">
+                        <b>Pronounciation: </b> <input type="text" name="pronounciation" class="form-control" value="{{language.pronounciation}}">
+                        <button type="submit" class="btn btn-warning btn-sm" style="margin-top: 5px;">Update</button>
+          
+                      </form>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- end Modal -->
+              {% endfor %}
+            </tbody> 
+          </table>
+          
       </div>
     </div>
 {% endblock %}

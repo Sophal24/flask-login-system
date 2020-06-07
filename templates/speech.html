@@ -5,52 +5,117 @@ Speech Mangement
 {% endblock %}
 
 {% block content %}
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        {% for category, message in messages %}
+          <div class="alert alert-{{category}} alert-dismissible fade show" role="alert" style="height: 50px; margin-top: -25px;">
+            <h5>{{ message }}</h5>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+    
+
     <div class="container-fluid">
       <div class="row">
-        <h1 class="sub-header">Speech Managment </h1>
+
+        <!-- Modal -->
+        <div class="container" style="margin-top: -15px;">
+          <h1 class="sub-header">Speech Management <button type="button" class="btn btn-success float-right btn-sm" data-toggle="modal" data-target="#exampleModalCenter"><i class="fas fa-plus"></i> Upload Voice</button></h1>
+          <!-- <p>Total Lexicon : {{ count }}</p> -->
+        </div>
+
+        <!-- Modal for Lexicon Management-->
+        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Upload Voice</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <form class="form-group" action="/upload" method="POST" enctype="multipart/form-data">
+
+                  <!-- <b>ID: </b> <input type="text" name="vid" class="form-control" required> -->
+                  <!-- <b>Speaker: </b> <input type="text" name="speaker" class="form-control" required> -->
+                  <!-- <b>Voice: </b> <input type="file" name="inputFile" class="form-control fileupload" required> -->
+                  <b>Voice: </b> <input type="file" name="file" class="form-control fileupload" required>
+                  <input type="submit" class="btn btn-warning btn-sm" style="margin-top: 5px;">
+
+                </form>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- end Modal for Lexicon Management-->
+      
         <div class="table-responsive">
           <table class="table table-striped">
             <thead>
               <tr>
                 <th></th>
                 <th>ID</th>
-                <th>Word</th>
-                <th>Pronounciation</th>
-                <th>Utterance ID</th>
+                <th>Utt ID</th>
+                <th>Speakers</th>
+                <th>Filename</th>
+                <th>Data</th>
                 <th>Action</th>
               </tr>
             </thead>
             <tbody>
+              {% for allfiles in allfile %}
+                <tr>
+                  <td>
+                    <input type="checkbox">
+                  </td>
+                  <td>{{ allfiles.id }}</td>
+                  <td>000</td>
+                  <td>Speakers Name</td>
+                  <td>{{ allfiles.filename }}</td>
+                  <!-- <td>{{ allfiles.data }}</td> -->
+                  <td>{{ audio }}</td>
+                  <!-- <td><audio controls="controls" src="/static/sound/M-003-003-001-001.wav "></audio></td> -->
+                  <td>Action</td>
+                </tr> 
+              {% endfor %}   
+            </tbody>
+          </table>
+        </div>
+
+
+
+        <div class="table-responsive">
+          <table class="table table-striped">
+            <thead>
               <tr>
-                <td>
-                  <input type="checkbox">
-                </td>
-                <td>1</td>
-                <td>Lorem</td>
-                <td>ipsum</td>
-                <td>dolor</td>
-                <td>sit</td>
+                <th>ID</th>
+                <th>Voice</th>
+                <th>Action</th>
               </tr>
-              <tr>
-                <td><input type="checkbox"></td>
-                <td>2</td>
-                <td>amet</td>
-                <td>consectetur</td>
-                <td>adipiscing</td>
-                <td>elit</td>
-              </tr>
-              <tr>
-                <td><input type="checkbox"></td>
-                <td>3</td>
-                <td>Integer</td>
-                <td>nec</td>
-                <td>odio</td>
-                <td>Praesent</td>
-              </tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>1</td>
+                  <td>Voice</td>
+                  <td>Action</td>
+                </tr> 
               
             </tbody>
           </table>
         </div>
+
+
       </div>
     </div>
 {% endblock %}
