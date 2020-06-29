@@ -1,0 +1,613 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+<head>
+<meta http-equiv="REFRESH" content="60">
+<title>iot</title>
+<style type="text/css">
+body {
+ background: #f0f0f5;
+}
+p,span {
+ font-family: monospace;
+}
+p {
+ margin-right: 6em;
+}
+p.phase {
+ font-weight: bold;
+ margin-bottom: 0;
+}
+p.result, p.WARNING, p.error {
+ margin-top: 0;
+ margin-bottom: 0;
+ margin-left: 5em;
+}
+span.status {
+ float: right;
+ margin-top: -1em;
+}
+.passed, .completed {
+ color: #00D000;
+}
+.WARNING, .warning {
+ color: #555500;
+}
+.FAILED, .error {
+ color: #DD0000;
+}
+</style>
+</head>
+<body>
+<h1 class="experiment">/Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject</h1>
+<h2 class="hostname">Training iot on macs-mbp</h2>
+<hr>
+<h3>MODULE: 000 Computing feature from audio files	(2020-06-29 00:02)</h3>
+<p class='audio files'>Extracting features from  segments starting at  (part 1 of 1) </p>
+<p class='result'>sphinx_fe <a href="file:///Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/logdir/000.comp_feat/iot.train-1-1.log">Log File</a></p><span class='status completed'>completed</span>
+<p class='audio files'>Extracting features from  segments starting at  (part 1 of 1) </p>
+<p class='result'>sphinx_fe <a href="file:///Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/logdir/000.comp_feat/iot.test-1-1.log">Log File</a></p><span class='status completed'>completed</span>
+<p>Feature extraction is done</p>
+<hr>
+<h3>MODULE: 00 verify training files	(2020-06-29 00:03)</h3>
+<p class='phase'>Phase 1: Checking to see if the dict and filler dict agrees with the phonelist file.</p>
+<p class='result'>Found 23 words using 35 phones</p>
+<span class='status passed'>passed</span>
+<p class='phase'>Phase 2: Checking to make sure there are not duplicate entries in the dictionary</p>
+<span class='status passed'>passed</span>
+<p class='phase'>Phase 3: Check general format for the fileids file; utterance length (must be positive); files exist</p>
+<span class='status passed'>passed</span>
+<p class='phase'>Phase 4: Checking number of lines in the transcript file should match lines in fileids file</p>
+<span class='status passed'>passed</span>
+<p class='phase'>Phase 5: Determine amount of training data, see if n_tied_states seems reasonable.</p>
+<p class='result'>Estimated Total Hours Training: 0.741225</p>
+<p class='result'>This is a small amount of data, no comment at this time</p>
+<span class='status WARNING'>WARNING</span>
+<p class='phase'>Phase 6: Checking that all the words in the transcript are in the dictionary</p>
+<p class='result'>Words in dictionary: 20</p>
+<p class='result'>Words in filler dictionary: 3</p>
+<span class='status passed'>passed</span>
+<p class='phase'>Phase 7: Checking that all the phones in the transcript are in the phonelist, and all phones in the phonelist appear at least once</p>
+<span class='status passed'>passed</span>
+<hr>
+<h3>MODULE: 0000 train grapheme-to-phoneme model	(2020-06-29 00:03)</h3>
+<p>Skipped (set $CFG_G2P_MODEL = 'yes' to enable)</p>
+<hr>
+<h3>MODULE: 01 Train LDA transformation	(2020-06-29 00:03)</h3>
+<p>Skipped (set $CFG_LDA_MLLT = 'yes' to enable)</p>
+<hr>
+<h3>MODULE: 02 Train MLLT transformation	(2020-06-29 00:03)</h3>
+<p>Skipped (set $CFG_LDA_MLLT = 'yes' to enable)</p>
+<hr>
+<h3>MODULE: 05 Vector Quantization	(2020-06-29 00:03)</h3>
+<p>Skipped for continuous models</p>
+<hr>
+<h3>MODULE: 10 Training Context Independent models for forced alignment and VTLN	(2020-06-29 00:03)</h3>
+<p>Skipped:  $ST::CFG_FORCEDALIGN set to 'no' in sphinx_train.cfg</p>
+<p>Skipped:  $ST::CFG_VTLN set to 'no' in sphinx_train.cfg</p>
+<hr>
+<h3>MODULE: 11 Force-aligning transcripts	(2020-06-29 00:03)</h3>
+<p>Skipped:  $ST::CFG_FORCEDALIGN set to 'no' in sphinx_train.cfg</p>
+<hr>
+<h3>MODULE: 12 Force-aligning data for VTLN	(2020-06-29 00:03)</h3>
+<p>Skipped:  $ST::CFG_VTLN set to 'no' in sphinx_train.cfg</p>
+<hr>
+<h3>MODULE: 20 Training Context Independent models	(2020-06-29 00:03)</h3>
+<p class='phase'>Phase 1: Cleaning up directories:</p>
+<span class='progress'>	accumulator...</span>
+<span class='progress'>logs...</span>
+<span class='progress'>qmanager...</span>
+<span class='progress'>models...
+</span>
+<span class='status completed'>completed</span>
+<p class='phase'>Phase 2: Flat initialize</p>
+<p class='result'>mk_mdef_gen <a href="file:///Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/logdir/20.ci_hmm/iot.make_ci_mdef_fromphonelist.log">Log File</a></p><span class='status completed'>completed</span>
+<p class='result'>mk_flat <a href="file:///Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/logdir/20.ci_hmm/iot.makeflat_cihmm.log">Log File</a></p><span class='status completed'>completed</span>
+<p class='result'>init_gau <a href="file:///Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/logdir/20.ci_hmm/iot.initmean_cihmm.log">Log File</a></p><span class='status completed'>completed</span>
+<p class='result'>norm <a href="file:///Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/logdir/20.ci_hmm/iot.normmean_cihmm.log">Log File</a></p><span class='status completed'>completed</span>
+<p class='result'>init_gau <a href="file:///Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/logdir/20.ci_hmm/iot.initvar_cihmm.log">Log File</a></p><span class='status completed'>completed</span>
+<p class='result'>norm <a href="file:///Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/logdir/20.ci_hmm/iot.normvar_cihmm.log">Log File</a></p><span class='status completed'>completed</span>
+<p class='result'>cp_parm <a href="file:///Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/logdir/20.ci_hmm/iot.cpmean_cihmm.log">Log File</a></p><span class='status completed'>completed</span>
+<p class='result'>cp_parm <a href="file:///Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/logdir/20.ci_hmm/iot.cpvar_cihmm.log">Log File</a></p><span class='status completed'>completed</span>
+<p class='phase'>Phase 3: Forward-Backward</p>
+<p class='result'>Baum welch starting for 1 Gaussian(s), iteration: 1 (1 of 1)</p>
+<p class='result'>bw <a href="file:///Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/logdir/20.ci_hmm/iot.1.1-1.bw.log">Log File</a></p><span class='status completed'>completed</span>
+<p class='result'>Normalization for iteration: 1</p>
+<p class='result'>norm <a href="file:///Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/logdir/20.ci_hmm/iot.1.1.norm.log">Log File</a></p><span class='status completed'>completed</span>
+<p class='result'>Current Overall Likelihood Per Frame = -150.143980872505</p>
+<p class='result'>Baum welch starting for 1 Gaussian(s), iteration: 2 (1 of 1)</p>
+<p class='result'>bw <a href="file:///Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/logdir/20.ci_hmm/iot.1.2-1.bw.log">Log File</a></p><span class='status completed'>completed</span>
+<p class='result'>Normalization for iteration: 2</p>
+<p class='result'>norm <a href="file:///Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/logdir/20.ci_hmm/iot.1.2.norm.log">Log File</a></p><span class='status completed'>completed</span>
+<p class='result'>Current Overall Likelihood Per Frame = -147.300864559794</p>
+<p class='result'>Convergence Ratio = 2.84311631271098</p>
+<p class='result'>Baum welch starting for 1 Gaussian(s), iteration: 3 (1 of 1)</p>
+<p class='result'>bw <a href="file:///Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/logdir/20.ci_hmm/iot.1.3-1.bw.log">Log File</a></p><span class='status completed'>completed</span>
+<p class='result'>Normalization for iteration: 3</p>
+<p class='result'>norm <a href="file:///Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/logdir/20.ci_hmm/iot.1.3.norm.log">Log File</a></p><span class='status completed'>completed</span>
+<p class='result'>Current Overall Likelihood Per Frame = -144.256279956978</p>
+<p class='result'>Convergence Ratio = 3.04458460281589</p>
+<p class='result'>Baum welch starting for 1 Gaussian(s), iteration: 4 (1 of 1)</p>
+<p class='result'>bw <a href="file:///Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/logdir/20.ci_hmm/iot.1.4-1.bw.log">Log File</a></p><p class='error'>ERROR: This step had 4 ERROR messages and 0 WARNING messages.  Please check the log file for details.</p>
+<span class='status completed'>completed</span>
+<p class='result'>Normalization for iteration: 4</p>
+<p class='result'>norm <a href="file:///Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/logdir/20.ci_hmm/iot.1.4.norm.log">Log File</a></p><span class='status completed'>completed</span>
+<p class='result'>Current Overall Likelihood Per Frame = -143.314056689096</p>
+<p class='result'>Convergence Ratio = 0.942223267882383</p>
+<p class='result'>Baum welch starting for 1 Gaussian(s), iteration: 5 (1 of 1)</p>
+<p class='result'>bw <a href="file:///Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/logdir/20.ci_hmm/iot.1.5-1.bw.log">Log File</a></p><p class='error'>ERROR: This step had 6 ERROR messages and 0 WARNING messages.  Please check the log file for details.</p>
+<span class='status completed'>completed</span>
+<p class='result'>Normalization for iteration: 5</p>
+<p class='result'>norm <a href="file:///Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/logdir/20.ci_hmm/iot.1.5.norm.log">Log File</a></p><span class='status completed'>completed</span>
+<p class='result'>Current Overall Likelihood Per Frame = -143.081825488031</p>
+<p class='result'>Convergence Ratio = 0.232231201064877</p>
+<p class='result'>Baum welch starting for 1 Gaussian(s), iteration: 6 (1 of 1)</p>
+<p class='result'>bw <a href="file:///Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/logdir/20.ci_hmm/iot.1.6-1.bw.log">Log File</a></p><p class='error'>ERROR: This step had 6 ERROR messages and 0 WARNING messages.  Please check the log file for details.</p>
+<span class='status completed'>completed</span>
+<p class='result'>Normalization for iteration: 6</p>
+<p class='result'>norm <a href="file:///Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/logdir/20.ci_hmm/iot.1.6.norm.log">Log File</a></p><span class='status completed'>completed</span>
+<p class='result'>Current Overall Likelihood Per Frame = -142.995410742318</p>
+<p class='result'>Training completed after 6 iterations</p>
+<hr>
+<h3>MODULE: 30 Training Context Dependent models	(2020-06-29 00:03)</h3>
+<p class='phase'>Phase 1: Cleaning up directories:</p>
+<span class='progress'>	accumulator...</span>
+<span class='progress'>logs...</span>
+<span class='progress'>qmanager...
+</span>
+<span class='status completed'>completed</span>
+<p class='phase'>Phase 2: Initialization</p>
+<p class='result'>mk_mdef_gen <a href="file:///Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/logdir/30.cd_hmm_untied/iot.make_alltriphonelist.log">Log File</a></p><span class='status completed'>completed</span>
+<p class='result'>init_mixw <a href="file:///Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/logdir/30.cd_hmm_untied/iot.copycitocd.log">Log File</a></p><span class='status completed'>completed</span>
+<p class='phase'>Phase 3: Forward-Backward</p>
+<p class='result'>Baum welch starting for iteration: 1 (1 of 1) </p>
+<p class='result'>bw <a href="file:///Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/logdir/30.cd_hmm_untied/iot.1-1.bw.log">Log File</a></p><p class='error'>ERROR: This step had 6 ERROR messages and 0 WARNING messages.  Please check the log file for details.</p>
+<span class='status completed'>completed</span>
+<p class='result'>Normalization for iteration: 1</p>
+<p class='result'>norm <a href="file:///Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/logdir/30.cd_hmm_untied/iot.1.norm.log">Log File</a></p><span class='status completed'>completed</span>
+<p class='result'>Current Overall Likelihood Per Frame = -142.953649248518</p>
+<p class='result'>Baum welch starting for iteration: 2 (1 of 1) </p>
+<p class='result'>bw <a href="file:///Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/logdir/30.cd_hmm_untied/iot.2-1.bw.log">Log File</a></p><p class='error'>ERROR: This step had 6 ERROR messages and 0 WARNING messages.  Please check the log file for details.</p>
+<span class='status completed'>completed</span>
+<p class='result'>Normalization for iteration: 2</p>
+<p class='result'>norm <a href="file:///Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/logdir/30.cd_hmm_untied/iot.2.norm.log">Log File</a></p><span class='status completed'>completed</span>
+<p class='result'>Current Overall Likelihood Per Frame = -142.528410584586</p>
+<p class='result'>Convergence Ratio = 0.425238663932191</p>
+<p class='result'>Baum welch starting for iteration: 3 (1 of 1) </p>
+<p class='result'>bw <a href="file:///Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/logdir/30.cd_hmm_untied/iot.3-1.bw.log">Log File</a></p><p class='error'>ERROR: This step had 6 ERROR messages and 0 WARNING messages.  Please check the log file for details.</p>
+<span class='status completed'>completed</span>
+<p class='result'>Normalization for iteration: 3</p>
+<p class='result'>norm <a href="file:///Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/logdir/30.cd_hmm_untied/iot.3.norm.log">Log File</a></p><span class='status completed'>completed</span>
+<p class='result'>Current Overall Likelihood Per Frame = -142.428100377806</p>
+<p class='result'>Convergence Ratio = 0.100310206779682</p>
+<p class='result'>Baum welch starting for iteration: 4 (1 of 1) </p>
+<p class='result'>bw <a href="file:///Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/logdir/30.cd_hmm_untied/iot.4-1.bw.log">Log File</a></p><p class='error'>ERROR: This step had 6 ERROR messages and 0 WARNING messages.  Please check the log file for details.</p>
+<span class='status completed'>completed</span>
+<p class='result'>Normalization for iteration: 4</p>
+<p class='result'>norm <a href="file:///Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/logdir/30.cd_hmm_untied/iot.4.norm.log">Log File</a></p><span class='status completed'>completed</span>
+<p class='result'>Current Overall Likelihood Per Frame = -142.375372736354</p>
+<p class='result'>Training completed after 4 iterations</p>
+<hr>
+<h3>MODULE: 40 Build Trees	(2020-06-29 00:03)</h3>
+<p class='phase'>Phase 1: Cleaning up old log files...</p>
+<p class='phase'>Phase 2: Make Questions</p>
+<p class='result'>make_quests <a href="file:///Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/logdir/40.buildtrees/iot.make_questions.log">Log File</a></p><span class='status completed'>completed</span>
+<p class='phase'>Phase 3: Tree building</p>
+<p class='result'>Processing each phone with each state</p>
+<p class='result'>? 0 </p>
+<p class='result'>bldtree <a href="file:///Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/logdir/40.buildtrees/iot.buildtree.?.0.log">Log File</a></p><span class='status completed'>completed</span>
+<p class='result'>? 1 </p>
+<p class='result'>bldtree <a href="file:///Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/logdir/40.buildtrees/iot.buildtree.?.1.log">Log File</a></p><span class='status completed'>completed</span>
+<p class='result'>? 2 </p>
+<p class='result'>bldtree <a href="file:///Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/logdir/40.buildtrees/iot.buildtree.?.2.log">Log File</a></p><span class='status completed'>completed</span>
+<p class='result'>a 0 </p>
+<p class='result'>bldtree <a href="file:///Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/logdir/40.buildtrees/iot.buildtree.a.0.log">Log File</a></p><span class='status completed'>completed</span>
+<p class='result'>a 1 </p>
+<p class='result'>bldtree <a href="file:///Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/logdir/40.buildtrees/iot.buildtree.a.1.log">Log File</a></p><span class='status completed'>completed</span>
+<p class='result'>a 2 </p>
+<p class='result'>bldtree <a href="file:///Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/logdir/40.buildtrees/iot.buildtree.a.2.log">Log File</a></p><span class='status completed'>completed</span>
+<p class='result'>ak 0 </p>
+<p class='result'>bldtree <a href="file:///Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/logdir/40.buildtrees/iot.buildtree.ak.0.log">Log File</a></p><span class='status completed'>completed</span>
+<p class='result'>ak 1 </p>
+<p class='result'>bldtree <a href="file:///Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/logdir/40.buildtrees/iot.buildtree.ak.1.log">Log File</a></p><span class='status completed'>completed</span>
+<p class='result'>ak 2 </p>
+<p class='result'>bldtree <a href="file:///Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/logdir/40.buildtrees/iot.buildtree.ak.2.log">Log File</a></p><span class='status completed'>completed</span>
+<p class='result'>ao 0 </p>
+<p class='result'>bldtree <a href="file:///Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/logdir/40.buildtrees/iot.buildtree.ao.0.log">Log File</a></p><span class='status completed'>completed</span>
+<p class='result'>ao 1 </p>
+<p class='result'>bldtree <a href="file:///Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/logdir/40.buildtrees/iot.buildtree.ao.1.log">Log File</a></p><span class='status completed'>completed</span>
+<p class='result'>ao 2 </p>
+<p class='result'>bldtree <a href="file:///Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/logdir/40.buildtrees/iot.buildtree.ao.2.log">Log File</a></p><span class='status completed'>completed</span>
+<p class='result'>av 0 </p>
+<p class='result'>bldtree <a href="file:///Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/logdir/40.buildtrees/iot.buildtree.av.0.log">Log File</a></p><span class='status completed'>completed</span>
+<p class='result'>av 1 </p>
+<p class='result'>bldtree <a href="file:///Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/logdir/40.buildtrees/iot.buildtree.av.1.log">Log File</a></p><span class='status completed'>completed</span>
+<p class='result'>av 2 </p>
+<p class='result'>bldtree <a href="file:///Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/logdir/40.buildtrees/iot.buildtree.av.2.log">Log File</a></p><span class='status completed'>completed</span>
+<p class='result'>b 0 </p>
+<p class='result'>bldtree <a href="file:///Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/logdir/40.buildtrees/iot.buildtree.b.0.log">Log File</a></p><span class='status completed'>completed</span>
+<p class='result'>b 1 </p>
+<p class='result'>bldtree <a href="file:///Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/logdir/40.buildtrees/iot.buildtree.b.1.log">Log File</a></p><span class='status completed'>completed</span>
+<p class='result'>b 2 </p>
+<p class='result'>bldtree <a href="file:///Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/logdir/40.buildtrees/iot.buildtree.b.2.log">Log File</a></p><span class='status completed'>completed</span>
+<p class='result'>c 0 </p>
+<p class='result'>bldtree <a href="file:///Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/logdir/40.buildtrees/iot.buildtree.c.0.log">Log File</a></p><span class='status completed'>completed</span>
+<p class='result'>c 1 </p>
+<p class='result'>bldtree <a href="file:///Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/logdir/40.buildtrees/iot.buildtree.c.1.log">Log File</a></p><span class='status completed'>completed</span>
+<p class='result'>c 2 </p>
+<p class='result'>bldtree <a href="file:///Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/logdir/40.buildtrees/iot.buildtree.c.2.log">Log File</a></p><span class='status completed'>completed</span>
+<p class='result'>ch 0 </p>
+<p class='result'>bldtree <a href="file:///Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/logdir/40.buildtrees/iot.buildtree.ch.0.log">Log File</a></p><span class='status completed'>completed</span>
+<p class='result'>ch 1 </p>
+<p class='result'>bldtree <a href="file:///Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/logdir/40.buildtrees/iot.buildtree.ch.1.log">Log File</a></p><span class='status completed'>completed</span>
+<p class='result'>ch 2 </p>
+<p class='result'>bldtree <a href="file:///Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/logdir/40.buildtrees/iot.buildtree.ch.2.log">Log File</a></p><span class='status completed'>completed</span>
+<p class='result'>d 0 </p>
+<p class='result'>bldtree <a href="file:///Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/logdir/40.buildtrees/iot.buildtree.d.0.log">Log File</a></p><span class='status completed'>completed</span>
+<p class='result'>d 1 </p>
+<p class='result'>bldtree <a href="file:///Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/logdir/40.buildtrees/iot.buildtree.d.1.log">Log File</a></p><span class='status completed'>completed</span>
+<p class='result'>d 2 </p>
+<p class='result'>bldtree <a href="file:///Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/logdir/40.buildtrees/iot.buildtree.d.2.log">Log File</a></p><span class='status completed'>completed</span>
+<p class='result'>e 0 </p>
+<p class='result'>bldtree <a href="file:///Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/logdir/40.buildtrees/iot.buildtree.e.0.log">Log File</a></p><span class='status completed'>completed</span>
+<p class='result'>e 1 </p>
+<p class='result'>bldtree <a href="file:///Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/logdir/40.buildtrees/iot.buildtree.e.1.log">Log File</a></p><span class='status completed'>completed</span>
+<p class='result'>e 2 </p>
+<p class='result'>bldtree <a href="file:///Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/logdir/40.buildtrees/iot.buildtree.e.2.log">Log File</a></p><span class='status completed'>completed</span>
+<p class='result'>ee 0 </p>
+<p class='result'>bldtree <a href="file:///Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/logdir/40.buildtrees/iot.buildtree.ee.0.log">Log File</a></p><span class='status completed'>completed</span>
+<p class='result'>ee 1 </p>
+<p class='result'>bldtree <a href="file:///Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/logdir/40.buildtrees/iot.buildtree.ee.1.log">Log File</a></p><span class='status completed'>completed</span>
+<p class='result'>ee 2 </p>
+<p class='result'>bldtree <a href="file:///Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/logdir/40.buildtrees/iot.buildtree.ee.2.log">Log File</a></p><span class='status completed'>completed</span>
+<p class='result'>eu 0 </p>
+<p class='result'>bldtree <a href="file:///Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/logdir/40.buildtrees/iot.buildtree.eu.0.log">Log File</a></p><span class='status completed'>completed</span>
+<p class='result'>eu 1 </p>
+<p class='result'>bldtree <a href="file:///Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/logdir/40.buildtrees/iot.buildtree.eu.1.log">Log File</a></p><span class='status completed'>completed</span>
+<p class='result'>eu 2 </p>
+<p class='result'>bldtree <a href="file:///Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/logdir/40.buildtrees/iot.buildtree.eu.2.log">Log File</a></p><span class='status completed'>completed</span>
+<p class='result'>h 0 </p>
+<p class='result'>bldtree <a href="file:///Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/logdir/40.buildtrees/iot.buildtree.h.0.log">Log File</a></p><span class='status completed'>completed</span>
+<p class='result'>h 1 </p>
+<p class='result'>bldtree <a href="file:///Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/logdir/40.buildtrees/iot.buildtree.h.1.log">Log File</a></p><span class='status completed'>completed</span>
+<p class='result'>h 2 </p>
+<p class='result'>bldtree <a href="file:///Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/logdir/40.buildtrees/iot.buildtree.h.2.log">Log File</a></p><span class='status completed'>completed</span>
+<p class='result'>j 0 </p>
+<p class='result'>bldtree <a href="file:///Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/logdir/40.buildtrees/iot.buildtree.j.0.log">Log File</a></p><span class='status completed'>completed</span>
+<p class='result'>j 1 </p>
+<p class='result'>bldtree <a href="file:///Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/logdir/40.buildtrees/iot.buildtree.j.1.log">Log File</a></p><span class='status completed'>completed</span>
+<p class='result'>j 2 </p>
+<p class='result'>bldtree <a href="file:///Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/logdir/40.buildtrees/iot.buildtree.j.2.log">Log File</a></p><span class='status completed'>completed</span>
+<p class='result'>k 0 </p>
+<p class='result'>bldtree <a href="file:///Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/logdir/40.buildtrees/iot.buildtree.k.0.log">Log File</a></p><span class='status completed'>completed</span>
+<p class='result'>k 1 </p>
+<p class='result'>bldtree <a href="file:///Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/logdir/40.buildtrees/iot.buildtree.k.1.log">Log File</a></p><span class='status completed'>completed</span>
+<p class='result'>k 2 </p>
+<p class='result'>bldtree <a href="file:///Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/logdir/40.buildtrees/iot.buildtree.k.2.log">Log File</a></p><span class='status completed'>completed</span>
+<p class='result'>l 0 </p>
+<p class='result'>bldtree <a href="file:///Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/logdir/40.buildtrees/iot.buildtree.l.0.log">Log File</a></p><span class='status completed'>completed</span>
+<p class='result'>l 1 </p>
+<p class='result'>bldtree <a href="file:///Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/logdir/40.buildtrees/iot.buildtree.l.1.log">Log File</a></p><span class='status completed'>completed</span>
+<p class='result'>l 2 </p>
+<p class='result'>bldtree <a href="file:///Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/logdir/40.buildtrees/iot.buildtree.l.2.log">Log File</a></p><span class='status completed'>completed</span>
+<p class='result'>m 0 </p>
+<p class='result'>bldtree <a href="file:///Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/logdir/40.buildtrees/iot.buildtree.m.0.log">Log File</a></p><span class='status completed'>completed</span>
+<p class='result'>m 1 </p>
+<p class='result'>bldtree <a href="file:///Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/logdir/40.buildtrees/iot.buildtree.m.1.log">Log File</a></p><span class='status completed'>completed</span>
+<p class='result'>m 2 </p>
+<p class='result'>bldtree <a href="file:///Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/logdir/40.buildtrees/iot.buildtree.m.2.log">Log File</a></p><span class='status completed'>completed</span>
+<p class='result'>n 0 </p>
+<p class='result'>bldtree <a href="file:///Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/logdir/40.buildtrees/iot.buildtree.n.0.log">Log File</a></p><span class='status completed'>completed</span>
+<p class='result'>n 1 </p>
+<p class='result'>bldtree <a href="file:///Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/logdir/40.buildtrees/iot.buildtree.n.1.log">Log File</a></p><span class='status completed'>completed</span>
+<p class='result'>n 2 </p>
+<p class='result'>bldtree <a href="file:///Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/logdir/40.buildtrees/iot.buildtree.n.2.log">Log File</a></p><span class='status completed'>completed</span>
+<p class='result'>ng 0 </p>
+<p class='result'>bldtree <a href="file:///Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/logdir/40.buildtrees/iot.buildtree.ng.0.log">Log File</a></p><span class='status completed'>completed</span>
+<p class='result'>ng 1 </p>
+<p class='result'>bldtree <a href="file:///Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/logdir/40.buildtrees/iot.buildtree.ng.1.log">Log File</a></p><span class='status completed'>completed</span>
+<p class='result'>ng 2 </p>
+<p class='result'>bldtree <a href="file:///Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/logdir/40.buildtrees/iot.buildtree.ng.2.log">Log File</a></p><span class='status completed'>completed</span>
+<p class='result'>nh 0 </p>
+<p class='result'>bldtree <a href="file:///Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/logdir/40.buildtrees/iot.buildtree.nh.0.log">Log File</a></p><span class='status completed'>completed</span>
+<p class='result'>nh 1 </p>
+<p class='result'>bldtree <a href="file:///Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/logdir/40.buildtrees/iot.buildtree.nh.1.log">Log File</a></p><span class='status completed'>completed</span>
+<p class='result'>nh 2 </p>
+<p class='result'>bldtree <a href="file:///Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/logdir/40.buildtrees/iot.buildtree.nh.2.log">Log File</a></p><span class='status completed'>completed</span>
+<p class='result'>o 0 </p>
+<p class='result'>bldtree <a href="file:///Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/logdir/40.buildtrees/iot.buildtree.o.0.log">Log File</a></p><span class='status completed'>completed</span>
+<p class='result'>o 1 </p>
+<p class='result'>bldtree <a href="file:///Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/logdir/40.buildtrees/iot.buildtree.o.1.log">Log File</a></p><span class='status completed'>completed</span>
+<p class='result'>o 2 </p>
+<p class='result'>bldtree <a href="file:///Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/logdir/40.buildtrees/iot.buildtree.o.2.log">Log File</a></p><span class='status completed'>completed</span>
+<p class='result'>oar 0 </p>
+<p class='result'>bldtree <a href="file:///Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/logdir/40.buildtrees/iot.buildtree.oar.0.log">Log File</a></p><span class='status completed'>completed</span>
+<p class='result'>oar 1 </p>
+<p class='result'>bldtree <a href="file:///Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/logdir/40.buildtrees/iot.buildtree.oar.1.log">Log File</a></p><span class='status completed'>completed</span>
+<p class='result'>oar 2 </p>
+<p class='result'>bldtree <a href="file:///Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/logdir/40.buildtrees/iot.buildtree.oar.2.log">Log File</a></p><span class='status completed'>completed</span>
+<p class='result'>oeu 0 </p>
+<p class='result'>bldtree <a href="file:///Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/logdir/40.buildtrees/iot.buildtree.oeu.0.log">Log File</a></p><span class='status completed'>completed</span>
+<p class='result'>oeu 1 </p>
+<p class='result'>bldtree <a href="file:///Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/logdir/40.buildtrees/iot.buildtree.oeu.1.log">Log File</a></p><span class='status completed'>completed</span>
+<p class='result'>oeu 2 </p>
+<p class='result'>bldtree <a href="file:///Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/logdir/40.buildtrees/iot.buildtree.oeu.2.log">Log File</a></p><span class='status completed'>completed</span>
+<p class='result'>oeur 0 </p>
+<p class='result'>bldtree <a href="file:///Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/logdir/40.buildtrees/iot.buildtree.oeur.0.log">Log File</a></p><span class='status completed'>completed</span>
+<p class='result'>oeur 1 </p>
+<p class='result'>bldtree <a href="file:///Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/logdir/40.buildtrees/iot.buildtree.oeur.1.log">Log File</a></p><span class='status completed'>completed</span>
+<p class='result'>oeur 2 </p>
+<p class='result'>bldtree <a href="file:///Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/logdir/40.buildtrees/iot.buildtree.oeur.2.log">Log File</a></p><span class='status completed'>completed</span>
+<p class='result'>ok 0 </p>
+<p class='result'>bldtree <a href="file:///Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/logdir/40.buildtrees/iot.buildtree.ok.0.log">Log File</a></p><span class='status completed'>completed</span>
+<p class='result'>ok 1 </p>
+<p class='result'>bldtree <a href="file:///Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/logdir/40.buildtrees/iot.buildtree.ok.1.log">Log File</a></p><span class='status completed'>completed</span>
+<p class='result'>ok 2 </p>
+<p class='result'>bldtree <a href="file:///Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/logdir/40.buildtrees/iot.buildtree.ok.2.log">Log File</a></p><span class='status completed'>completed</span>
+<p class='result'>or 0 </p>
+<p class='result'>bldtree <a href="file:///Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/logdir/40.buildtrees/iot.buildtree.or.0.log">Log File</a></p><span class='status completed'>completed</span>
+<p class='result'>or 1 </p>
+<p class='result'>bldtree <a href="file:///Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/logdir/40.buildtrees/iot.buildtree.or.1.log">Log File</a></p><span class='status completed'>completed</span>
+<p class='result'>or 2 </p>
+<p class='result'>bldtree <a href="file:///Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/logdir/40.buildtrees/iot.buildtree.or.2.log">Log File</a></p><span class='status completed'>completed</span>
+<p class='result'>p 0 </p>
+<p class='result'>bldtree <a href="file:///Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/logdir/40.buildtrees/iot.buildtree.p.0.log">Log File</a></p><span class='status completed'>completed</span>
+<p class='result'>p 1 </p>
+<p class='result'>bldtree <a href="file:///Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/logdir/40.buildtrees/iot.buildtree.p.1.log">Log File</a></p><span class='status completed'>completed</span>
+<p class='result'>p 2 </p>
+<p class='result'>bldtree <a href="file:///Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/logdir/40.buildtrees/iot.buildtree.p.2.log">Log File</a></p><span class='status completed'>completed</span>
+<p class='result'>r 0 </p>
+<p class='result'>bldtree <a href="file:///Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/logdir/40.buildtrees/iot.buildtree.r.0.log">Log File</a></p><span class='status completed'>completed</span>
+<p class='result'>r 1 </p>
+<p class='result'>bldtree <a href="file:///Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/logdir/40.buildtrees/iot.buildtree.r.1.log">Log File</a></p><span class='status completed'>completed</span>
+<p class='result'>r 2 </p>
+<p class='result'>bldtree <a href="file:///Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/logdir/40.buildtrees/iot.buildtree.r.2.log">Log File</a></p><span class='status completed'>completed</span>
+<p class='result'>s 0 </p>
+<p class='result'>bldtree <a href="file:///Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/logdir/40.buildtrees/iot.buildtree.s.0.log">Log File</a></p><span class='status completed'>completed</span>
+<p class='result'>s 1 </p>
+<p class='result'>bldtree <a href="file:///Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/logdir/40.buildtrees/iot.buildtree.s.1.log">Log File</a></p><span class='status completed'>completed</span>
+<p class='result'>s 2 </p>
+<p class='result'>bldtree <a href="file:///Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/logdir/40.buildtrees/iot.buildtree.s.2.log">Log File</a></p><span class='status completed'>completed</span>
+<p class='result'>t 0 </p>
+<p class='result'>bldtree <a href="file:///Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/logdir/40.buildtrees/iot.buildtree.t.0.log">Log File</a></p><span class='status completed'>completed</span>
+<p class='result'>t 1 </p>
+<p class='result'>bldtree <a href="file:///Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/logdir/40.buildtrees/iot.buildtree.t.1.log">Log File</a></p><span class='status completed'>completed</span>
+<p class='result'>t 2 </p>
+<p class='result'>bldtree <a href="file:///Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/logdir/40.buildtrees/iot.buildtree.t.2.log">Log File</a></p><span class='status completed'>completed</span>
+<p class='result'>th 0 </p>
+<p class='result'>bldtree <a href="file:///Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/logdir/40.buildtrees/iot.buildtree.th.0.log">Log File</a></p><span class='status completed'>completed</span>
+<p class='result'>th 1 </p>
+<p class='result'>bldtree <a href="file:///Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/logdir/40.buildtrees/iot.buildtree.th.1.log">Log File</a></p><span class='status completed'>completed</span>
+<p class='result'>th 2 </p>
+<p class='result'>bldtree <a href="file:///Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/logdir/40.buildtrees/iot.buildtree.th.2.log">Log File</a></p><span class='status completed'>completed</span>
+<p class='result'>u 0 </p>
+<p class='result'>bldtree <a href="file:///Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/logdir/40.buildtrees/iot.buildtree.u.0.log">Log File</a></p><span class='status completed'>completed</span>
+<p class='result'>u 1 </p>
+<p class='result'>bldtree <a href="file:///Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/logdir/40.buildtrees/iot.buildtree.u.1.log">Log File</a></p><span class='status completed'>completed</span>
+<p class='result'>u 2 </p>
+<p class='result'>bldtree <a href="file:///Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/logdir/40.buildtrees/iot.buildtree.u.2.log">Log File</a></p><span class='status completed'>completed</span>
+<p class='result'>uer 0 </p>
+<p class='result'>bldtree <a href="file:///Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/logdir/40.buildtrees/iot.buildtree.uer.0.log">Log File</a></p><span class='status completed'>completed</span>
+<p class='result'>uer 1 </p>
+<p class='result'>bldtree <a href="file:///Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/logdir/40.buildtrees/iot.buildtree.uer.1.log">Log File</a></p><span class='status completed'>completed</span>
+<p class='result'>uer 2 </p>
+<p class='result'>bldtree <a href="file:///Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/logdir/40.buildtrees/iot.buildtree.uer.2.log">Log File</a></p><span class='status completed'>completed</span>
+<p class='result'>v 0 </p>
+<p class='result'>bldtree <a href="file:///Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/logdir/40.buildtrees/iot.buildtree.v.0.log">Log File</a></p><span class='status completed'>completed</span>
+<p class='result'>v 1 </p>
+<p class='result'>bldtree <a href="file:///Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/logdir/40.buildtrees/iot.buildtree.v.1.log">Log File</a></p><span class='status completed'>completed</span>
+<p class='result'>v 2 </p>
+<p class='result'>bldtree <a href="file:///Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/logdir/40.buildtrees/iot.buildtree.v.2.log">Log File</a></p><span class='status completed'>completed</span>
+<p class='result'>Skipping SIL</p>
+<hr>
+<h3>MODULE: 45 Prune Trees	(2020-06-29 00:04)</h3>
+<p class='result'>mk_mdef_gen <a href="file:///Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/logdir/45.prunetree/iot.build.alltriphones.mdef.log">Log File</a></p><span class='status completed'>completed</span>
+<p class='phase'>Phase 1: Tree Pruning</p>
+<p class='result'>prunetree <a href="file:///Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/logdir/45.prunetree/iot.prunetree.200.log">Log File</a></p><span class='status completed'>completed</span>
+<p class='phase'>Phase 2: State Tying</p>
+<p class='result'>tiestate <a href="file:///Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/logdir/45.prunetree/iot.tiestate.200.log">Log File</a></p><span class='status completed'>completed</span>
+<hr>
+<h3>MODULE: 50 Training Context dependent models	(2020-06-29 00:04)</h3>
+<p class='phase'>Phase 1: Cleaning up directories:</p>
+<span class='progress'>	accumulator...</span>
+<span class='progress'>logs...</span>
+<span class='progress'>qmanager...
+</span>
+<span class='status completed'>completed</span>
+<p class='phase'>Phase 2: Copy CI to CD initialize</p>
+<p class='result'>init_mixw <a href="file:///Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/logdir/50.cd_hmm_tied/iot.copy.ci.2.cd.log">Log File</a></p><span class='status completed'>completed</span>
+<p class='phase'>Phase 3: Forward-Backward</p>
+<p class='result'>Baum welch starting for 1 Gaussian(s), iteration: 1 (1 of 1)</p>
+<p class='result'>bw <a href="file:///Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/logdir/50.cd_hmm_tied/iot.1.1-1.bw.log">Log File</a></p><p class='error'>ERROR: This step had 6 ERROR messages and 0 WARNING messages.  Please check the log file for details.</p>
+<span class='status completed'>completed</span>
+<p class='result'>Normalization for iteration: 1</p>
+<p class='result'>norm <a href="file:///Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/logdir/50.cd_hmm_tied/iot.1.1.norm.log">Log File</a></p><span class='status completed'>completed</span>
+<p class='result'>Current Overall Likelihood Per Frame = -142.953649248518</p>
+<p class='result'>Baum welch starting for 1 Gaussian(s), iteration: 2 (1 of 1)</p>
+<p class='result'>bw <a href="file:///Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/logdir/50.cd_hmm_tied/iot.1.2-1.bw.log">Log File</a></p><p class='error'>ERROR: This step had 6 ERROR messages and 0 WARNING messages.  Please check the log file for details.</p>
+<span class='status completed'>completed</span>
+<p class='result'>Normalization for iteration: 2</p>
+<p class='result'>norm <a href="file:///Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/logdir/50.cd_hmm_tied/iot.1.2.norm.log">Log File</a></p><span class='status completed'>completed</span>
+<p class='result'>Current Overall Likelihood Per Frame = -142.522627068358</p>
+<p class='result'>Convergence Ratio = 0.431022180159829</p>
+<p class='result'>Baum welch starting for 1 Gaussian(s), iteration: 3 (1 of 1)</p>
+<p class='result'>bw <a href="file:///Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/logdir/50.cd_hmm_tied/iot.1.3-1.bw.log">Log File</a></p><p class='error'>ERROR: This step had 6 ERROR messages and 0 WARNING messages.  Please check the log file for details.</p>
+<span class='status completed'>completed</span>
+<p class='result'>Normalization for iteration: 3</p>
+<p class='result'>norm <a href="file:///Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/logdir/50.cd_hmm_tied/iot.1.3.norm.log">Log File</a></p><span class='status completed'>completed</span>
+<p class='result'>Current Overall Likelihood Per Frame = -142.456942848344</p>
+<p class='result'>Split Gaussians, increase by 1</p>
+<p class='result'>inc_comp <a href="file:///Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/logdir/50.cd_hmm_tied/iot.split_gaussians.1.1.log">Log File</a></p><span class='status completed'>completed</span>
+<p class='result'>Current Overall Likelihood Per Frame = -142.456942848344</p>
+<p class='result'>Convergence Ratio = 0.065684220013793</p>
+<p class='result'>Baum welch starting for 2 Gaussian(s), iteration: 1 (1 of 1)</p>
+<p class='result'>bw <a href="file:///Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/logdir/50.cd_hmm_tied/iot.2.1-1.bw.log">Log File</a></p><p class='error'>ERROR: This step had 8 ERROR messages and 0 WARNING messages.  Please check the log file for details.</p>
+<span class='status completed'>completed</span>
+<p class='result'>Normalization for iteration: 1</p>
+<p class='result'>norm <a href="file:///Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/logdir/50.cd_hmm_tied/iot.2.1.norm.log">Log File</a></p><span class='status completed'>completed</span>
+<p class='result'>Current Overall Likelihood Per Frame = -142.720913273591</p>
+<p class='result'>Baum welch starting for 2 Gaussian(s), iteration: 2 (1 of 1)</p>
+<p class='result'>bw <a href="file:///Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/logdir/50.cd_hmm_tied/iot.2.2-1.bw.log">Log File</a></p><p class='error'>ERROR: This step had 6 ERROR messages and 0 WARNING messages.  Please check the log file for details.</p>
+<span class='status completed'>completed</span>
+<p class='result'>Normalization for iteration: 2</p>
+<p class='result'>norm <a href="file:///Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/logdir/50.cd_hmm_tied/iot.2.2.norm.log">Log File</a></p><span class='status completed'>completed</span>
+<p class='result'>Current Overall Likelihood Per Frame = -142.266499921134</p>
+<p class='result'>Convergence Ratio = 0.454413352457152</p>
+<p class='result'>Baum welch starting for 2 Gaussian(s), iteration: 3 (1 of 1)</p>
+<p class='result'>bw <a href="file:///Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/logdir/50.cd_hmm_tied/iot.2.3-1.bw.log">Log File</a></p><p class='error'>ERROR: This step had 6 ERROR messages and 0 WARNING messages.  Please check the log file for details.</p>
+<span class='status completed'>completed</span>
+<p class='result'>Normalization for iteration: 3</p>
+<p class='result'>norm <a href="file:///Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/logdir/50.cd_hmm_tied/iot.2.3.norm.log">Log File</a></p><span class='status completed'>completed</span>
+<p class='result'>Current Overall Likelihood Per Frame = -141.960123782269</p>
+<p class='result'>Convergence Ratio = 0.306376138864607</p>
+<p class='result'>Baum welch starting for 2 Gaussian(s), iteration: 4 (1 of 1)</p>
+<p class='result'>bw <a href="file:///Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/logdir/50.cd_hmm_tied/iot.2.4-1.bw.log">Log File</a></p><p class='error'>ERROR: This step had 6 ERROR messages and 0 WARNING messages.  Please check the log file for details.</p>
+<span class='status completed'>completed</span>
+<p class='result'>Normalization for iteration: 4</p>
+<p class='result'>norm <a href="file:///Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/logdir/50.cd_hmm_tied/iot.2.4.norm.log">Log File</a></p><span class='status completed'>completed</span>
+<p class='result'>Current Overall Likelihood Per Frame = -141.620360981545</p>
+<p class='result'>Convergence Ratio = 0.339762800723662</p>
+<p class='result'>Baum welch starting for 2 Gaussian(s), iteration: 5 (1 of 1)</p>
+<p class='result'>bw <a href="file:///Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/logdir/50.cd_hmm_tied/iot.2.5-1.bw.log">Log File</a></p><p class='error'>ERROR: This step had 10 ERROR messages and 0 WARNING messages.  Please check the log file for details.</p>
+<span class='status completed'>completed</span>
+<p class='result'>Normalization for iteration: 5</p>
+<p class='result'>norm <a href="file:///Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/logdir/50.cd_hmm_tied/iot.2.5.norm.log">Log File</a></p><span class='status completed'>completed</span>
+<p class='result'>Current Overall Likelihood Per Frame = -141.413550962717</p>
+<p class='result'>Convergence Ratio = 0.206810018828179</p>
+<p class='result'>Baum welch starting for 2 Gaussian(s), iteration: 6 (1 of 1)</p>
+<p class='result'>bw <a href="file:///Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/logdir/50.cd_hmm_tied/iot.2.6-1.bw.log">Log File</a></p><p class='error'>ERROR: This step had 10 ERROR messages and 0 WARNING messages.  Please check the log file for details.</p>
+<span class='status completed'>completed</span>
+<p class='result'>Normalization for iteration: 6</p>
+<p class='result'>norm <a href="file:///Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/logdir/50.cd_hmm_tied/iot.2.6.norm.log">Log File</a></p><span class='status completed'>completed</span>
+<p class='result'>Current Overall Likelihood Per Frame = -141.297055086498</p>
+<p class='result'>Convergence Ratio = 0.116495876219091</p>
+<p class='result'>Baum welch starting for 2 Gaussian(s), iteration: 7 (1 of 1)</p>
+<p class='result'>bw <a href="file:///Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/logdir/50.cd_hmm_tied/iot.2.7-1.bw.log">Log File</a></p><p class='error'>ERROR: This step had 10 ERROR messages and 0 WARNING messages.  Please check the log file for details.</p>
+<span class='status completed'>completed</span>
+<p class='result'>Normalization for iteration: 7</p>
+<p class='result'>norm <a href="file:///Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/logdir/50.cd_hmm_tied/iot.2.7.norm.log">Log File</a></p><span class='status completed'>completed</span>
+<p class='result'>Current Overall Likelihood Per Frame = -141.221721838372</p>
+<p class='result'>Split Gaussians, increase by 2</p>
+<p class='result'>inc_comp <a href="file:///Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/logdir/50.cd_hmm_tied/iot.split_gaussians.2.2.log">Log File</a></p><span class='status completed'>completed</span>
+<p class='result'>Current Overall Likelihood Per Frame = -141.221721838372</p>
+<p class='result'>Convergence Ratio = 0.0753332481261566</p>
+<p class='result'>Baum welch starting for 4 Gaussian(s), iteration: 1 (1 of 1)</p>
+<p class='result'>bw <a href="file:///Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/logdir/50.cd_hmm_tied/iot.4.1-1.bw.log">Log File</a></p><p class='error'>ERROR: This step had 6 ERROR messages and 0 WARNING messages.  Please check the log file for details.</p>
+<span class='status completed'>completed</span>
+<p class='result'>Normalization for iteration: 1</p>
+<p class='result'>norm <a href="file:///Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/logdir/50.cd_hmm_tied/iot.4.1.norm.log">Log File</a></p><span class='status completed'>completed</span>
+<p class='result'>Current Overall Likelihood Per Frame = -141.45220740029</p>
+<p class='result'>Baum welch starting for 4 Gaussian(s), iteration: 2 (1 of 1)</p>
+<p class='result'>bw <a href="file:///Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/logdir/50.cd_hmm_tied/iot.4.2-1.bw.log">Log File</a></p><p class='error'>ERROR: This step had 6 ERROR messages and 0 WARNING messages.  Please check the log file for details.</p>
+<span class='status completed'>completed</span>
+<p class='result'>Normalization for iteration: 2</p>
+<p class='result'>norm <a href="file:///Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/logdir/50.cd_hmm_tied/iot.4.2.norm.log">Log File</a></p><span class='status completed'>completed</span>
+<p class='result'>Current Overall Likelihood Per Frame = -140.980962533124</p>
+<p class='result'>Convergence Ratio = 0.471244867165865</p>
+<p class='result'>Baum welch starting for 4 Gaussian(s), iteration: 3 (1 of 1)</p>
+<p class='result'>bw <a href="file:///Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/logdir/50.cd_hmm_tied/iot.4.3-1.bw.log">Log File</a></p><p class='error'>ERROR: This step had 4 ERROR messages and 0 WARNING messages.  Please check the log file for details.</p>
+<span class='status completed'>completed</span>
+<p class='result'>Normalization for iteration: 3</p>
+<p class='result'>norm <a href="file:///Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/logdir/50.cd_hmm_tied/iot.4.3.norm.log">Log File</a></p><span class='status completed'>completed</span>
+<p class='result'>Current Overall Likelihood Per Frame = -140.645220602031</p>
+<p class='result'>Convergence Ratio = 0.335741931093224</p>
+<p class='result'>Baum welch starting for 4 Gaussian(s), iteration: 4 (1 of 1)</p>
+<p class='result'>bw <a href="file:///Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/logdir/50.cd_hmm_tied/iot.4.4-1.bw.log">Log File</a></p><p class='error'>ERROR: This step had 4 ERROR messages and 0 WARNING messages.  Please check the log file for details.</p>
+<span class='status completed'>completed</span>
+<p class='result'>Normalization for iteration: 4</p>
+<p class='result'>norm <a href="file:///Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/logdir/50.cd_hmm_tied/iot.4.4.norm.log">Log File</a></p><span class='status completed'>completed</span>
+<p class='result'>Current Overall Likelihood Per Frame = -140.283266666166</p>
+<p class='result'>Convergence Ratio = 0.361953935864648</p>
+<p class='result'>Baum welch starting for 4 Gaussian(s), iteration: 5 (1 of 1)</p>
+<p class='result'>bw <a href="file:///Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/logdir/50.cd_hmm_tied/iot.4.5-1.bw.log">Log File</a></p><p class='error'>ERROR: This step had 4 ERROR messages and 0 WARNING messages.  Please check the log file for details.</p>
+<span class='status completed'>completed</span>
+<p class='result'>Normalization for iteration: 5</p>
+<p class='result'>norm <a href="file:///Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/logdir/50.cd_hmm_tied/iot.4.5.norm.log">Log File</a></p><span class='status completed'>completed</span>
+<p class='result'>Current Overall Likelihood Per Frame = -139.947804486338</p>
+<p class='result'>Convergence Ratio = 0.335462179828397</p>
+<p class='result'>Baum welch starting for 4 Gaussian(s), iteration: 6 (1 of 1)</p>
+<p class='result'>bw <a href="file:///Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/logdir/50.cd_hmm_tied/iot.4.6-1.bw.log">Log File</a></p><p class='error'>ERROR: This step had 4 ERROR messages and 0 WARNING messages.  Please check the log file for details.</p>
+<span class='status completed'>completed</span>
+<p class='result'>Normalization for iteration: 6</p>
+<p class='result'>norm <a href="file:///Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/logdir/50.cd_hmm_tied/iot.4.6.norm.log">Log File</a></p><span class='status completed'>completed</span>
+<p class='result'>Current Overall Likelihood Per Frame = -139.755270208407</p>
+<p class='result'>Convergence Ratio = 0.192534277931173</p>
+<p class='result'>Baum welch starting for 4 Gaussian(s), iteration: 7 (1 of 1)</p>
+<p class='result'>bw <a href="file:///Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/logdir/50.cd_hmm_tied/iot.4.7-1.bw.log">Log File</a></p><p class='error'>ERROR: This step had 4 ERROR messages and 0 WARNING messages.  Please check the log file for details.</p>
+<span class='status completed'>completed</span>
+<p class='result'>Normalization for iteration: 7</p>
+<p class='result'>norm <a href="file:///Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/logdir/50.cd_hmm_tied/iot.4.7.norm.log">Log File</a></p><span class='status completed'>completed</span>
+<p class='result'>Current Overall Likelihood Per Frame = -139.586525977681</p>
+<p class='result'>Convergence Ratio = 0.168744230726134</p>
+<p class='result'>Baum welch starting for 4 Gaussian(s), iteration: 8 (1 of 1)</p>
+<p class='result'>bw <a href="file:///Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/logdir/50.cd_hmm_tied/iot.4.8-1.bw.log">Log File</a></p><p class='error'>ERROR: This step had 2 ERROR messages and 0 WARNING messages.  Please check the log file for details.</p>
+<span class='status completed'>completed</span>
+<p class='result'>Normalization for iteration: 8</p>
+<p class='result'>norm <a href="file:///Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/logdir/50.cd_hmm_tied/iot.4.8.norm.log">Log File</a></p><span class='status completed'>completed</span>
+<p class='result'>Current Overall Likelihood Per Frame = -139.540832014639</p>
+<p class='result'>Split Gaussians, increase by 4</p>
+<p class='result'>inc_comp <a href="file:///Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/logdir/50.cd_hmm_tied/iot.split_gaussians.4.4.log">Log File</a></p><span class='status completed'>completed</span>
+<p class='result'>Current Overall Likelihood Per Frame = -139.540832014639</p>
+<p class='result'>Convergence Ratio = 0.0456939630416002</p>
+<p class='result'>Baum welch starting for 8 Gaussian(s), iteration: 1 (1 of 1)</p>
+<p class='result'>bw <a href="file:///Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/logdir/50.cd_hmm_tied/iot.8.1-1.bw.log">Log File</a></p><p class='error'>ERROR: This step had 2 ERROR messages and 0 WARNING messages.  Please check the log file for details.</p>
+<span class='status completed'>completed</span>
+<p class='result'>Normalization for iteration: 1</p>
+<p class='result'>norm <a href="file:///Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/logdir/50.cd_hmm_tied/iot.8.1.norm.log">Log File</a></p><span class='status completed'>completed</span>
+<p class='result'>Current Overall Likelihood Per Frame = -139.799833507076</p>
+<p class='result'>Baum welch starting for 8 Gaussian(s), iteration: 2 (1 of 1)</p>
+<p class='result'>bw <a href="file:///Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/logdir/50.cd_hmm_tied/iot.8.2-1.bw.log">Log File</a></p><p class='error'>ERROR: This step had 2 ERROR messages and 0 WARNING messages.  Please check the log file for details.</p>
+<span class='status completed'>completed</span>
+<p class='result'>Normalization for iteration: 2</p>
+<p class='result'>norm <a href="file:///Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/logdir/50.cd_hmm_tied/iot.8.2.norm.log">Log File</a></p><span class='status completed'>completed</span>
+<p class='result'>Current Overall Likelihood Per Frame = -139.324353714967</p>
+<p class='result'>Convergence Ratio = 0.475479792108871</p>
+<p class='result'>Baum welch starting for 8 Gaussian(s), iteration: 3 (1 of 1)</p>
+<p class='result'>bw <a href="file:///Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/logdir/50.cd_hmm_tied/iot.8.3-1.bw.log">Log File</a></p><p class='error'>ERROR: This step had 2 ERROR messages and 0 WARNING messages.  Please check the log file for details.</p>
+<span class='status completed'>completed</span>
+<p class='result'>Normalization for iteration: 3</p>
+<p class='result'>norm <a href="file:///Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/logdir/50.cd_hmm_tied/iot.8.3.norm.log">Log File</a></p><span class='status completed'>completed</span>
+<p class='result'>Current Overall Likelihood Per Frame = -139.015141856471</p>
+<p class='result'>Convergence Ratio = 0.3092118584959</p>
+<p class='result'>Baum welch starting for 8 Gaussian(s), iteration: 4 (1 of 1)</p>
+<p class='result'>bw <a href="file:///Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/logdir/50.cd_hmm_tied/iot.8.4-1.bw.log">Log File</a></p><p class='error'>ERROR: This step had 4 ERROR messages and 0 WARNING messages.  Please check the log file for details.</p>
+<span class='status completed'>completed</span>
+<p class='result'>Normalization for iteration: 4</p>
+<p class='result'>norm <a href="file:///Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/logdir/50.cd_hmm_tied/iot.8.4.norm.log">Log File</a></p><span class='status completed'>completed</span>
+<p class='result'>Current Overall Likelihood Per Frame = -138.77102267184</p>
+<p class='result'>Convergence Ratio = 0.244119184631046</p>
+<p class='result'>Baum welch starting for 8 Gaussian(s), iteration: 5 (1 of 1)</p>
+<p class='result'>bw <a href="file:///Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/logdir/50.cd_hmm_tied/iot.8.5-1.bw.log">Log File</a></p><p class='error'>ERROR: This step had 4 ERROR messages and 0 WARNING messages.  Please check the log file for details.</p>
+<span class='status completed'>completed</span>
+<p class='result'>Normalization for iteration: 5</p>
+<p class='result'>norm <a href="file:///Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/logdir/50.cd_hmm_tied/iot.8.5.norm.log">Log File</a></p><span class='status completed'>completed</span>
+<p class='result'>Current Overall Likelihood Per Frame = -138.622616304813</p>
+<p class='result'>Convergence Ratio = 0.148406367027206</p>
+<p class='result'>Baum welch starting for 8 Gaussian(s), iteration: 6 (1 of 1)</p>
+<p class='result'>bw <a href="file:///Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/logdir/50.cd_hmm_tied/iot.8.6-1.bw.log">Log File</a></p><p class='error'>ERROR: This step had 4 ERROR messages and 0 WARNING messages.  Please check the log file for details.</p>
+<span class='status completed'>completed</span>
+<p class='result'>Normalization for iteration: 6</p>
+<p class='result'>norm <a href="file:///Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/logdir/50.cd_hmm_tied/iot.8.6.norm.log">Log File</a></p><span class='status completed'>completed</span>
+<p class='result'>Current Overall Likelihood Per Frame = -138.525392310636</p>
+<p>Training for 8 Gaussian(s) completed after 6 iterations</p>
+<hr>
+<h3>MODULE: 60 Lattice Generation	(2020-06-29 00:05)</h3>
+<p>Skipped:  $ST::CFG_MMIE set to 'no' in sphinx_train.cfg</p>
+<hr>
+<h3>MODULE: 61 Lattice Pruning	(2020-06-29 00:05)</h3>
+<p>Skipped:  $ST::CFG_MMIE set to 'no' in sphinx_train.cfg</p>
+<hr>
+<h3>MODULE: 62 Lattice Format Conversion	(2020-06-29 00:05)</h3>
+<p>Skipped:  $ST::CFG_MMIE set to 'no' in sphinx_train.cfg</p>
+<hr>
+<h3>MODULE: 65 MMIE Training	(2020-06-29 00:05)</h3>
+<p>Skipped:  $ST::CFG_MMIE set to 'no' in sphinx_train.cfg</p>
+<hr>
+<h3>MODULE: 90 deleted interpolation	(2020-06-29 00:05)</h3>
+<p>Skipped for continuous models</p>
+<hr>
+<h3>MODULE: DECODE Decoding using models previously trained	(2020-06-29 00:05)</h3>
+<p class='result'>Decoding 60 segments starting at 0 (part 1 of 1) </p>
+<p class='result'>pocketsphinx_batch <a href="file:///Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/logdir/decode/iot-1-1.log">Log File</a></p><span class='status completed'>completed</span>
+<p>        Aligning results to find error rate</p>
+<p class='result'>SENTENCE ERROR: 20.0% (12/60)   WORD ERROR RATE: 23.3% (13/60)</p>
+<p class='result'>

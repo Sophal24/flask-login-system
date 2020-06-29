@@ -1,0 +1,68 @@
+WDBNDRY_B
+WDBNDRY_E
+WDBNDRY_S
+WDBNDRY_I
+SILENCE   SIL
+QUESTION0_0_R  a ao ee ng or uer
+QUESTION0_1_R  ? ak av b c ch d e eu h j k l m n nh o oar oeu oeur ok p r s t th u v
+QUESTION0_2_R  ? ak av e eu h j k m n nh o oar oeu oeur ok p r u v
+QUESTION0_3_R  ? eu h j k m n nh p
+QUESTION0_4_R  eu j
+QUESTION0_5_R  ? h k m n nh p
+QUESTION0_6_R  ? k n p
+QUESTION0_7_R  h m nh
+QUESTION0_8_R  ak av e o oar oeu oeur ok r u v
+QUESTION0_9_R  ak av e o oar oeu oeur ok u v
+QUESTION0_10_R  e ok u v
+QUESTION0_11_R  e ok
+QUESTION0_12_R  u v
+QUESTION0_13_R  ak av o oar oeu oeur
+QUESTION0_14_R  b c ch d l s t th
+QUESTION0_15_R  s
+QUESTION0_16_R  b c ch d l t th
+QUESTION0_17_R  b c t th
+QUESTION0_18_R  c t th
+QUESTION0_19_R  c th
+QUESTION0_20_R  ch d l
+QUESTION0  ak av ee eu h m n ng nh o oar oeu oeur ok or u uer
+QUESTION1  h m n ng nh o oar ok or u
+QUESTION2  h m n ng nh
+QUESTION3  m n
+QUESTION4  h ng nh
+QUESTION5  h ng
+QUESTION6  o oar ok or u
+QUESTION7  ak av ee eu oeu oeur uer
+QUESTION8  ee
+QUESTION9  ak av eu oeu oeur uer
+QUESTION10  ak oeu
+QUESTION11  av eu oeur uer
+QUESTION12  ? a ao b c ch d e j k l p r s t th v
+QUESTION13  ? b c ch j k p s t th
+QUESTION14  ? b j k p t
+QUESTION15  b j
+QUESTION16  ? k p t
+QUESTION17  ? p
+QUESTION18  k t
+QUESTION19  c ch s th
+QUESTION20  a ao d e l r v
+QUESTION2_0_L  a h j m n ng nh p
+QUESTION2_1_L  h ng nh p
+QUESTION2_2_L  h p
+QUESTION2_3_L  ng nh
+QUESTION2_4_L  a j m n
+QUESTION2_5_L  ? ak ao av b c ch d e ee eu k l o oar oeu oeur ok or r s t th u uer v
+QUESTION2_6_L  ? b c ch d ok s t th
+QUESTION2_7_L  d ok
+QUESTION2_8_L  ? b c ch s t th
+QUESTION2_9_L  b c
+QUESTION2_10_L  ? ch s t th
+QUESTION2_11_L  ? ch s th
+QUESTION2_12_L  ? ch s
+QUESTION2_13_L  ? ch
+QUESTION2_14_L  ak ao av e ee eu k l o oar oeu oeur or r u uer v
+QUESTION2_15_L  ao ee
+QUESTION2_16_L  ak av e eu k l o oar oeu oeur or r u uer v
+QUESTION2_17_L  k l oeur
+QUESTION2_18_L  ak av e eu o oar oeu or r u uer v
+QUESTION2_19_L  ak av e eu oeu or r uer v
+QUESTION2_20_L  o oar u

@@ -41,12 +41,14 @@ Speech Mangement
                 </button>
               </div>
               <div class="modal-body">
-                <form class="form-group" action="/upload" method="POST" enctype="multipart/form-data">
+                <form class="form-group" action="/uploadvoice" method="POST" enctype="multipart/form-data">
 
                   <!-- <b>ID: </b> <input type="text" name="vid" class="form-control" required> -->
                   <!-- <b>Speaker: </b> <input type="text" name="speaker" class="form-control" required> -->
                   <!-- <b>Voice: </b> <input type="file" name="inputFile" class="form-control fileupload" required> -->
-                  <b>Voice: </b> <input type="file" name="file" class="form-control fileupload" required>
+                  
+                  <b>Voice: </b> <input type="file" name="inputFile" class="form-control fileupload" required>
+                  <!-- <b>Voice: </b> <input type="file" name="file" class="form-control fileupload" required> -->
                   <input type="submit" class="btn btn-warning btn-sm" style="margin-top: 5px;">
 
                 </form>
@@ -63,58 +65,35 @@ Speech Mangement
           <table class="table table-striped">
             <thead>
               <tr>
-                <th></th>
                 <th>ID</th>
-                <th>Utt ID</th>
-                <th>Speakers</th>
                 <th>Filename</th>
                 <th>Data</th>
-                <th>Action</th>
               </tr>
             </thead>
+
             <tbody>
-              {% for allfiles in allfile %}
+              
                 <tr>
-                  <td>
-                    <input type="checkbox">
-                  </td>
-                  <td>{{ allfiles.id }}</td>
-                  <td>000</td>
-                  <td>Speakers Name</td>
-                  <td>{{ allfiles.filename }}</td>
-                  <!-- <td>{{ allfiles.data }}</td> -->
-                  <td>{{ audio }}</td>
+                  <td> id </td>
+                  <td> filename </td>
+                  <td> data </td>
                   <!-- <td><audio controls="controls" src="/static/sound/M-003-003-001-001.wav "></audio></td> -->
-                  <td>Action</td>
-                </tr> 
-              {% endfor %}   
-            </tbody>
-          </table>
-        </div>
-
-
-
-        <div class="table-responsive">
-          <table class="table table-striped">
-            <thead>
-              <tr>
-                <th>ID</th>
-                <th>Voice</th>
-                <th>Action</th>
-              </tr>
-            </thead>
-            <tbody>
-              
+                </tr>
+                {% for voices in voice %}
                 <tr>
-                  <td>1</td>
-                  <td>Voice</td>
-                  <td>Action</td>
-                </tr> 
-              
+                  <td> {{ voices.id }} </td>
+                  <td> {{ voices.filename }} </td>
+                  <td> {{ voices.data }} </td>
+                  <!-- <td><audio controls="controls" src="/static/sound/M-003-003-001-001.wav "></audio></td> -->
+                </tr>
+                {% endfor %}
             </tbody>
+
           </table>
         </div>
 
+        <img style="width: 100px; height: 100px;" src="data:;base64,{{ image }}"/>
+        <audio src="data:;base64,{{ image }}">
 
       </div>
     </div>

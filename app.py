@@ -11,16 +11,21 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user, current_user
 from io import BytesIO # help to downlaod file
 
+from pocketsphinx import AudioFile
+
+
+from base64 import b64encode
+
 from werkzeug.utils import secure_filename
 UPLOAD_FOLDER = '/Volumes/HDD/WEB/Flask/building_user_login_system/finish/static/sound'
-# ALLOWED_EXTENSIONS = {'wav','mp3'}
-ALLOWED_EXTENSIONS = {'txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif', 'wav','mp3'}
+ALLOWED_EXTENSIONS = {'wav','mp3'}
+# ALLOWED_EXTENSIONS = {'txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif', 'wav','mp3'}
 
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'Thisissupposedtobesecret!'
-# app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:24071999@localhost/prettyprinted' #posgresql+username+password=@localhost/database
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://vqfhxxncclgtkm:87c1e6539b84ba12105a17cfc6733cb2ddb9d7b902c896ca73791f6c9ab17f2d@ec2-3-91-139-25.compute-1.amazonaws.com:5432/d6mglfsgk46cmg'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:24071999@localhost/prettyprinted' #posgresql+username+password=@localhost/database
+# app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://vqfhxxncclgtkm:87c1e6539b84ba12105a17cfc6733cb2ddb9d7b902c896ca73791f6c9ab17f2d@ec2-3-91-139-25.compute-1.amazonaws.com:5432/d6mglfsgk46cmg'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS']=False
 
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
@@ -210,7 +215,7 @@ class VoiceFile(db.Model):
         self.data = data
 
 # ================ Speech management =================
-# upload voce file
+# function to upload voice file (upload into database)
 @app.route('/uploadvoice', methods=["POST"])
 @login_required
 def uploadvoice():
@@ -228,6 +233,8 @@ def allowed_file(filename):
     return '.' in filename and \
            filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
+
+# function to upload file into a folder 
 @app.route('/upload', methods=['GET', 'POST'])
 def upload_file():
     if request.method == 'POST':
@@ -261,6 +268,8 @@ def uploadapi():
         if 'file' not in request.files:
             return jsonify(message="No file part", staus="404"), 404
         file = request.files['file']
+
+        
         # if user does not select file, browser also
         # submit an empty part without filename
         if file.filename == '':
@@ -270,10 +279,51 @@ def uploadapi():
             filename = secure_filename(file.filename)
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
             # return redirect(url_for('uploaded_file', filename=filename))
-            return jsonify(message="File Saved Successfully.", status="200"), 200
+            config = {
+                'verbose' : False,
+                'logfn' : '/dev/null' or 'nul',
+                'audio_file' : 'tovmok.wav',
+                'audio_device' : None,
+                'sampling_rate' : 16000,
+                'buffer_size' : 2048,
+                'no_search' : False,
+                'full_utt' : False,
+                'hmm' : 'ASRProject/model_parameters/iot.ci_cont',
+                'lm' : 'ASRProject/etc/iot.lm.DMP',
+                'dict' : 'ASRProject/etc/iot.dic',
+            }
+
+            audio = AudioFile(**config)
+            for phrase in audio:
+                word = phrase
+                pass
+
+            return jsonify(message="File Saved Successfully.",result=word, status="200"), 200
 
         else:
             return jsonify(message="File Extesion is not allowed.", status="404"), 404
+
+
+# decode voice file into khmer text
+@app.route('/phone')
+def phone():
+    config = {
+        'verbose' : False,
+        'logfn' : '/dev/null' or 'nul',
+        'audio_file' : 'tovmok.wav',
+        'audio_device' : None,
+        'sampling_rate' : 16000,
+        'buffer_size' : 2048,
+        'no_search' : False,
+        'full_utt' : False,
+        'hmm' : 'ASRProject/model_parameters/iot.ci_cont',
+        'lm' : 'ASRProject/etc/iot.lm.DMP',
+        'dict' : 'ASRProject/etc/iot.dic',
+    }
+
+    audio = AudioFile(**config)
+    for phrase in audio:
+        print(phrase)
 
 
 # ==============xEnd Speech management x==============
@@ -300,7 +350,6 @@ def login():
                 return redirect(url_for('dashboard'))
 
         return '<h1>Invalid username or password</h1>'
-        #return '<h1>' + form.username.data + ' ' + form.password.data + '</h1>'
 
     return render_template('login.html', form=form, login=True)
 
@@ -352,8 +401,9 @@ def language():
 @app.route('/speech')
 @login_required
 def speech():
-    allfile = VoiceFile.query.all()
-    return render_template('speech.html', speech=True, allfile=allfile)
+    # voice = VoiceFile.query.all()
+    voice = VoiceFile.query.all()
+    return render_template('speech.html', speech=True, voice=voice)
 
 
 @app.route('/decoding')
@@ -362,11 +412,12 @@ def decoding():
     return render_template('decoding.html', decoding=True)
 
 
-# @app.route('/base')
-# @login_required
-# def base():
-#     return render_template('base.html', decoding=True)
 
+@app.route("/show/<int:id>")
+def show(id):
+    obj = VoiceFile.query.get_or_404(id)
+    image = b64encode(obj.data).decode("utf-8")
+    return render_template("speech.html", obj=obj, image=image)
 
 
 if __name__ == '__main__':

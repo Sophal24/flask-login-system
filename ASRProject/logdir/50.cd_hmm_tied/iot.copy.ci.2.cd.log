@@ -1,0 +1,490 @@
+Current configuration:
+[NAME]		[DEFLT]	[VALUE]
+-dest_meanfn		/Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/model_parameters/iot.cd_cont_initial/means
+-dest_mixwfn		/Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/model_parameters/iot.cd_cont_initial/mixture_weights
+-dest_moddeffn		/Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/model_architecture/iot.200.mdef
+-dest_tmatfn		/Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/model_parameters/iot.cd_cont_initial/transition_matrices
+-dest_ts2cbfn		.cont.
+-dest_varfn		/Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/model_parameters/iot.cd_cont_initial/variances
+-example	no	no
+-fullvar	no	no
+-help		no	no
+-src_meanfn		/Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/model_parameters/iot.ci_cont/means
+-src_mixwfn		/Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/model_parameters/iot.ci_cont/mixture_weights
+-src_moddeffn		/Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/model_architecture/iot.ci.mdef
+-src_tmatfn		/Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/model_parameters/iot.ci_cont/transition_matrices
+-src_ts2cbfn		.cont.
+-src_varfn		/Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/model_parameters/iot.ci_cont/variances
+
+INFO: main.c(261): Reading src /Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/model_architecture/iot.ci.mdef
+INFO: model_def_io.c(573): Model definition info:
+INFO: model_def_io.c(574): 35 total models defined (35 base, 0 tri)
+INFO: model_def_io.c(575): 140 total states
+INFO: model_def_io.c(576): 105 total tied states
+INFO: model_def_io.c(577): 105 total tied CI states
+INFO: model_def_io.c(578): 35 total tied transition matrices
+INFO: model_def_io.c(579): 4 max state/model
+INFO: model_def_io.c(580): 4 min state/model
+INFO: main.c(278): Generating continous ts2cb mapping
+INFO: main.c(299): Reading src /Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/model_parameters/iot.ci_cont/mixture_weights
+INFO: s3mixw_io.c(117): Read /Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/model_parameters/iot.ci_cont/mixture_weights [105x1x1 array]
+INFO: main.c(309): Reading src /Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/model_parameters/iot.ci_cont/transition_matrices
+INFO: s3tmat_io.c(118): Read /Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/model_parameters/iot.ci_cont/transition_matrices [35x3x4 array]
+INFO: main.c(318): Reading src /Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/model_parameters/iot.ci_cont/means
+INFO: s3gau_io.c(169): Read /Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/model_parameters/iot.ci_cont/means [105x1x1 array]
+INFO: main.c(342): Reading src /Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/model_parameters/iot.ci_cont/variances
+INFO: s3gau_io.c(169): Read /Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/model_parameters/iot.ci_cont/variances [105x1x1 array]
+INFO: main.c(391): Reading dest /Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/model_architecture/iot.200.mdef
+INFO: model_def_io.c(573): Model definition info:
+INFO: model_def_io.c(574): 396 total models defined (35 base, 361 tri)
+INFO: model_def_io.c(575): 1584 total states
+INFO: model_def_io.c(576): 305 total tied states
+INFO: model_def_io.c(577): 105 total tied CI states
+INFO: model_def_io.c(578): 35 total tied transition matrices
+INFO: model_def_io.c(579): 4 max state/model
+INFO: model_def_io.c(580): 4 min state/model
+INFO: main.c(407): Generating continous ts2cb mapping
+INFO: main.c(431): Calculating initial model parameters
+INFO: main.c(439): Alloc 35x3x4 dest tmat
+INFO: main.c(450): Alloc 305x1x1 dest mixw
+INFO: main.c(463): Alloc 305x1x1 dest mean and var
+         ? <- ?         : [tm     0 +=     0]
+[mx     0(0) +=     0] [mg     0(0) <-     0] [mx     1(1) +=     1] [mg     1(1) <-     1] [mx     2(2) +=     2] [mg     2(2) <-     2] 
+       SIL <- SIL       : [tm     1 +=     1]
+[mx     3(0) +=     3] [mg     3(0) <-     3] [mx     4(1) +=     4] [mg     4(1) <-     4] [mx     5(2) +=     5] [mg     5(2) <-     5] 
+         a <- a         : [tm     2 +=     2]
+[mx     6(0) +=     6] [mg     6(0) <-     6] [mx     7(1) +=     7] [mg     7(1) <-     7] [mx     8(2) +=     8] [mg     8(2) <-     8] 
+        ak <- ak        : [tm     3 +=     3]
+[mx     9(0) +=     9] [mg     9(0) <-     9] [mx    10(1) +=    10] [mg    10(1) <-    10] [mx    11(2) +=    11] [mg    11(2) <-    11] 
+        ao <- ao        : [tm     4 +=     4]
+[mx    12(0) +=    12] [mg    12(0) <-    12] [mx    13(1) +=    13] [mg    13(1) <-    13] [mx    14(2) +=    14] [mg    14(2) <-    14] 
+        av <- av        : [tm     5 +=     5]
+[mx    15(0) +=    15] [mg    15(0) <-    15] [mx    16(1) +=    16] [mg    16(1) <-    16] [mx    17(2) +=    17] [mg    17(2) <-    17] 
+         b <- b         : [tm     6 +=     6]
+[mx    18(0) +=    18] [mg    18(0) <-    18] [mx    19(1) +=    19] [mg    19(1) <-    19] [mx    20(2) +=    20] [mg    20(2) <-    20] 
+         c <- c         : [tm     7 +=     7]
+[mx    21(0) +=    21] [mg    21(0) <-    21] [mx    22(1) +=    22] [mg    22(1) <-    22] [mx    23(2) +=    23] [mg    23(2) <-    23] 
+        ch <- ch        : [tm     8 +=     8]
+[mx    24(0) +=    24] [mg    24(0) <-    24] [mx    25(1) +=    25] [mg    25(1) <-    25] [mx    26(2) +=    26] [mg    26(2) <-    26] 
+         d <- d         : [tm     9 +=     9]
+[mx    27(0) +=    27] [mg    27(0) <-    27] [mx    28(1) +=    28] [mg    28(1) <-    28] [mx    29(2) +=    29] [mg    29(2) <-    29] 
+         e <- e         : [tm    10 +=    10]
+[mx    30(0) +=    30] [mg    30(0) <-    30] [mx    31(1) +=    31] [mg    31(1) <-    31] [mx    32(2) +=    32] [mg    32(2) <-    32] 
+        ee <- ee        : [tm    11 +=    11]
+[mx    33(0) +=    33] [mg    33(0) <-    33] [mx    34(1) +=    34] [mg    34(1) <-    34] [mx    35(2) +=    35] [mg    35(2) <-    35] 
+        eu <- eu        : [tm    12 +=    12]
+[mx    36(0) +=    36] [mg    36(0) <-    36] [mx    37(1) +=    37] [mg    37(1) <-    37] [mx    38(2) +=    38] [mg    38(2) <-    38] 
+         h <- h         : [tm    13 +=    13]
+[mx    39(0) +=    39] [mg    39(0) <-    39] [mx    40(1) +=    40] [mg    40(1) <-    40] [mx    41(2) +=    41] [mg    41(2) <-    41] 
+         j <- j         : [tm    14 +=    14]
+[mx    42(0) +=    42] [mg    42(0) <-    42] [mx    43(1) +=    43] [mg    43(1) <-    43] [mx    44(2) +=    44] [mg    44(2) <-    44] 
+         k <- k         : [tm    15 +=    15]
+[mx    45(0) +=    45] [mg    45(0) <-    45] [mx    46(1) +=    46] [mg    46(1) <-    46] [mx    47(2) +=    47] [mg    47(2) <-    47] 
+         l <- l         : [tm    16 +=    16]
+[mx    48(0) +=    48] [mg    48(0) <-    48] [mx    49(1) +=    49] [mg    49(1) <-    49] [mx    50(2) +=    50] [mg    50(2) <-    50] 
+         m <- m         : [tm    17 +=    17]
+[mx    51(0) +=    51] [mg    51(0) <-    51] [mx    52(1) +=    52] [mg    52(1) <-    52] [mx    53(2) +=    53] [mg    53(2) <-    53] 
+         n <- n         : [tm    18 +=    18]
+[mx    54(0) +=    54] [mg    54(0) <-    54] [mx    55(1) +=    55] [mg    55(1) <-    55] [mx    56(2) +=    56] [mg    56(2) <-    56] 
+        ng <- ng        : [tm    19 +=    19]
+[mx    57(0) +=    57] [mg    57(0) <-    57] [mx    58(1) +=    58] [mg    58(1) <-    58] [mx    59(2) +=    59] [mg    59(2) <-    59] 
+        nh <- nh        : [tm    20 +=    20]
+[mx    60(0) +=    60] [mg    60(0) <-    60] [mx    61(1) +=    61] [mg    61(1) <-    61] [mx    62(2) +=    62] [mg    62(2) <-    62] 
+         o <- o         : [tm    21 +=    21]
+[mx    63(0) +=    63] [mg    63(0) <-    63] [mx    64(1) +=    64] [mg    64(1) <-    64] [mx    65(2) +=    65] [mg    65(2) <-    65] 
+       oar <- oar       : [tm    22 +=    22]
+[mx    66(0) +=    66] [mg    66(0) <-    66] [mx    67(1) +=    67] [mg    67(1) <-    67] [mx    68(2) +=    68] [mg    68(2) <-    68] 
+       oeu <- oeu       : [tm    23 +=    23]
+[mx    69(0) +=    69] [mg    69(0) <-    69] [mx    70(1) +=    70] [mg    70(1) <-    70] [mx    71(2) +=    71] [mg    71(2) <-    71] 
+      oeur <- oeur      : [tm    24 +=    24]
+[mx    72(0) +=    72] [mg    72(0) <-    72] [mx    73(1) +=    73] [mg    73(1) <-    73] [mx    74(2) +=    74] [mg    74(2) <-    74] 
+        ok <- ok        : [tm    25 +=    25]
+[mx    75(0) +=    75] [mg    75(0) <-    75] [mx    76(1) +=    76] [mg    76(1) <-    76] [mx    77(2) +=    77] [mg    77(2) <-    77] 
+        or <- or        : [tm    26 +=    26]
+[mx    78(0) +=    78] [mg    78(0) <-    78] [mx    79(1) +=    79] [mg    79(1) <-    79] [mx    80(2) +=    80] [mg    80(2) <-    80] 
+         p <- p         : [tm    27 +=    27]
+[mx    81(0) +=    81] [mg    81(0) <-    81] [mx    82(1) +=    82] [mg    82(1) <-    82] [mx    83(2) +=    83] [mg    83(2) <-    83] 
+         r <- r         : [tm    28 +=    28]
+[mx    84(0) +=    84] [mg    84(0) <-    84] [mx    85(1) +=    85] [mg    85(1) <-    85] [mx    86(2) +=    86] [mg    86(2) <-    86] 
+         s <- s         : [tm    29 +=    29]
+[mx    87(0) +=    87] [mg    87(0) <-    87] [mx    88(1) +=    88] [mg    88(1) <-    88] [mx    89(2) +=    89] [mg    89(2) <-    89] 
+         t <- t         : [tm    30 +=    30]
+[mx    90(0) +=    90] [mg    90(0) <-    90] [mx    91(1) +=    91] [mg    91(1) <-    91] [mx    92(2) +=    92] [mg    92(2) <-    92] 
+        th <- th        : [tm    31 +=    31]
+[mx    93(0) +=    93] [mg    93(0) <-    93] [mx    94(1) +=    94] [mg    94(1) <-    94] [mx    95(2) +=    95] [mg    95(2) <-    95] 
+         u <- u         : [tm    32 +=    32]
+[mx    96(0) +=    96] [mg    96(0) <-    96] [mx    97(1) +=    97] [mg    97(1) <-    97] [mx    98(2) +=    98] [mg    98(2) <-    98] 
+       uer <- uer       : [tm    33 +=    33]
+[mx    99(0) +=    99] [mg    99(0) <-    99] [mx   100(1) +=   100] [mg   100(1) <-   100] [mx   101(2) +=   101] [mg   101(2) <-   101] 
+         v <- v         : [tm    34 +=    34]
+[mx   102(0) +=   102] [mg   102(0) <-   102] [mx   103(1) +=   103] [mg   103(1) <-   103] [mx   104(2) +=   104] [mg   104(2) <-   104] 
+  ? ak c i <- ?         : [mx   105(0) +=     0] [mg   105(0) <-     0] [mx   106(1) +=     1] [mg   106(1) <-     1] [mx   107(2) +=     2] [mg   107(2) <-     2] 
+   a d m i <- a         : [mx   108(0) +=     6] [mg   108(0) <-     6] [mx   109(1) +=     7] [mg   109(1) <-     7] [mx   110(2) +=     8] [mg   110(2) <-     8] 
+  ak c p i <- ak        : [mx   112(0) +=     9] [mg   112(0) <-     9] [mx   114(1) +=    10] [mg   114(1) <-    10] [mx   116(2) +=    11] [mg   116(2) <-    11] 
+  ak d ? i <- ak        : [mx   111(0) +=     9] [mg   111(0) <-     9] [mx   113(1) +=    10] [mg   113(1) <-    10] [mx   115(2) +=    11] [mg   115(2) <-    11] 
+  ao r j i <- ao        : [mx   117(0) +=    12] [mg   117(0) <-    12] [mx   118(1) +=    13] [mg   118(1) <-    13] [mx   119(2) +=    14] [mg   119(2) <-    14] 
+ av t ch i <- av        : [mx   120(0) +=    15] [mg   120(0) <-    15] [mx   121(1) +=    16] [mg   121(1) <-    16] [mx   124(2) +=    17] [mg   124(2) <-    17] 
+  av t m i <- av        : [mx   123(1) +=    16] [mg   123(1) <-    16] [mx   126(2) +=    17] [mg   126(2) <-    17] 
+  av t s i <- av        : [mx   122(1) +=    16] [mg   122(1) <-    16] [mx   125(2) +=    17] [mg   125(2) <-    17] 
+ b SIL e b <- b         : [mx   127(0) +=    18] [mg   127(0) <-    18] [mx   129(1) +=    19] [mg   129(1) <-    19] [mx   131(2) +=    20] [mg   131(2) <-    20] 
+b SIL oeu b <- b         : [mx   132(2) +=    20] [mg   132(2) <-    20] 
+b SIL ok b <- b         : [mx   128(0) +=    18] [mg   128(0) <-    18] [mx   130(1) +=    19] [mg   130(1) <-    19] 
+   b h e b <- b         : 
+ b h oeu b <- b         : 
+  b h ok b <- b         : 
+   b j e b <- b         : 
+ b j oeu b <- b         : 
+  b j ok b <- b         : 
+   b k e b <- b         : 
+ b k oeu b <- b         : 
+  b k ok b <- b         : 
+   b m e b <- b         : 
+ b m oeu b <- b         : 
+  b m ok b <- b         : 
+   b n e b <- b         : 
+ b n oeu b <- b         : 
+  b n ok b <- b         : 
+  b ng e b <- b         : 
+b ng oeu b <- b         : 
+ b ng ok b <- b         : 
+  b nh e b <- b         : 
+b nh oeu b <- b         : 
+ b nh ok b <- b         : 
+   b p e b <- b         : 
+ b p oeu b <- b         : 
+  b p ok b <- b         : 
+   b t e b <- b         : 
+ b t oeu b <- b         : 
+  b t ok b <- b         : 
+   c ? o i <- c         : [mx   134(0) +=    21] [mg   134(0) <-    21] [mx   135(1) +=    22] [mg   135(1) <-    22] [mx   136(2) +=    23] [mg   136(2) <-    23] 
+c SIL ak b <- c         : [mx   133(0) +=    21] [mg   133(0) <-    21] [mx   137(2) +=    23] [mg   137(2) <-    23] 
+ c SIL o b <- c         : 
+  c h ak b <- c         : 
+   c h o b <- c         : 
+  c j ak b <- c         : 
+   c j o b <- c         : 
+  c k ak b <- c         : 
+   c k o b <- c         : 
+  c m ak b <- c         : 
+   c m o b <- c         : 
+  c n ak b <- c         : 
+   c n o b <- c         : 
+ c ng ak b <- c         : 
+  c ng o b <- c         : 
+ c nh ak b <- c         : 
+  c nh o b <- c         : 
+  c p ak b <- c         : 
+   c p o b <- c         : 
+  c t ak b <- c         : 
+   c t o b <- c         : 
+ch SIL u b <- ch        : [mx   139(0) +=    24] [mg   139(0) <-    24] [mx   142(1) +=    25] [mg   142(1) <-    25] [mx   144(2) +=    26] [mg   144(2) <-    26] 
+ ch av v i <- ch        : [mx   138(0) +=    24] [mg   138(0) <-    24] [mx   141(1) +=    25] [mg   141(1) <-    25] [mx   143(2) +=    26] [mg   143(2) <-    26] 
+  ch h u b <- ch        : 
+  ch j u b <- ch        : [mx   140(0) +=    24] [mg   140(0) <-    24] 
+  ch k u b <- ch        : 
+  ch m u b <- ch        : 
+  ch n u b <- ch        : 
+ ch ng u b <- ch        : 
+ ch nh u b <- ch        : 
+  ch p u b <- ch        : 
+  ch t u b <- ch        : 
+  ch t v i <- ch        : 
+d SIL ak b <- d         : [mx   146(0) +=    27] [mg   146(0) <-    27] [mx   148(1) +=    28] [mg   148(1) <-    28] [mx   150(2) +=    29] [mg   150(2) <-    29] 
+  d h ak b <- d         : 
+  d j ak b <- d         : 
+  d k ak b <- d         : 
+  d m ak b <- d         : 
+  d n ak b <- d         : 
+ d ng ak b <- d         : 
+ d nh ak b <- d         : 
+  d p ak b <- d         : 
+   d s a i <- d         : [mx   145(0) +=    27] [mg   145(0) <-    27] [mx   147(1) +=    28] [mg   147(1) <-    28] [mx   149(2) +=    29] [mg   149(2) <-    29] 
+  d t ak b <- d         : 
+   e b t i <- e         : [mx   151(0) +=    30] [mg   151(0) <-    30] [mx   152(1) +=    31] [mg   152(1) <-    31] [mx   153(2) +=    32] [mg   153(2) <-    32] 
+ ee l nh i <- ee        : [mx   155(0) +=    33] [mg   155(0) <-    33] [mx   157(1) +=    34] [mg   157(1) <-    34] [mx   158(2) +=    35] [mg   158(2) <-    35] 
+ ee v nh i <- ee        : [mx   154(0) +=    33] [mg   154(0) <-    33] [mx   156(1) +=    34] [mg   156(1) <-    34] 
+  eu j t i <- eu        : [mx   159(0) +=    36] [mg   159(0) <-    36] [mx   160(1) +=    37] [mg   160(1) <-    37] [mx   161(2) +=    38] [mg   161(2) <-    38] 
+ h o SIL e <- h         : [mx   162(0) +=    39] [mg   162(0) <-    39] [mx   163(1) +=    40] [mg   163(1) <-    40] [mx   164(2) +=    41] [mg   164(2) <-    41] 
+   h o b e <- h         : 
+   h o c e <- h         : 
+  h o ch e <- h         : 
+   h o d e <- h         : 
+   h o j e <- h         : 
+   h o k e <- h         : 
+   h o l e <- h         : 
+   h o r e <- h         : 
+   h o t e <- h         : 
+  h o th e <- h         : 
+j SIL eu b <- j         : [mx   167(0) +=    42] [mg   167(0) <-    42] [mx   169(1) +=    43] [mg   169(1) <-    43] [mx   172(2) +=    44] [mg   172(2) <-    44] 
+j ao SIL e <- j         : [mx   166(0) +=    42] [mg   166(0) <-    42] [mx   170(1) +=    43] [mg   170(1) <-    43] [mx   173(2) +=    44] [mg   173(2) <-    44] 
+  j ao b e <- j         : 
+  j ao c e <- j         : 
+ j ao ch e <- j         : 
+  j ao d e <- j         : 
+  j ao j e <- j         : 
+  j ao k e <- j         : 
+  j ao l e <- j         : 
+  j ao r e <- j         : 
+  j ao t e <- j         : 
+ j ao th e <- j         : 
+  j h eu b <- j         : 
+  j j eu b <- j         : 
+  j k eu b <- j         : 
+  j m eu b <- j         : 
+  j n eu b <- j         : 
+ j ng eu b <- j         : 
+ j nh eu b <- j         : 
+  j or k i <- j         : [mx   165(0) +=    42] [mg   165(0) <-    42] [mx   168(1) +=    43] [mg   168(1) <-    43] [mx   171(2) +=    44] [mg   171(2) <-    44] 
+  j p eu b <- j         : 
+  j t eu b <- j         : 
+ k SIL r b <- k         : [mx   176(0) +=    45] [mg   176(0) <-    45] [mx   180(1) +=    46] [mg   180(1) <-    46] [mx   183(2) +=    47] [mg   183(2) <-    47] 
+   k h r b <- k         : 
+   k j r b <- k         : 
+   k j r i <- k         : [mx   175(0) +=    45] [mg   175(0) <-    45] 
+   k k r b <- k         : 
+   k m r b <- k         : 
+   k n r b <- k         : 
+  k ng r b <- k         : 
+  k nh r b <- k         : 
+k oeu SIL e <- k         : [mx   178(0) +=    45] [mg   178(0) <-    45] [mx   181(1) +=    46] [mg   181(1) <-    46] [mx   185(2) +=    47] [mg   185(2) <-    47] 
+ k oeu b e <- k         : 
+ k oeu c e <- k         : 
+k oeu ch e <- k         : 
+ k oeu d e <- k         : 
+ k oeu j e <- k         : 
+ k oeu k e <- k         : 
+ k oeu l e <- k         : 
+ k oeu r e <- k         : 
+ k oeu t e <- k         : 
+k oeu th e <- k         : 
+   k p r b <- k         : 
+   k p r i <- k         : [mx   174(0) +=    45] [mg   174(0) <-    45] 
+   k t r b <- k         : 
+ k u SIL e <- k         : [mx   179(0) +=    45] [mg   179(0) <-    45] [mx   182(1) +=    46] [mg   182(1) <-    46] [mx   186(2) +=    47] [mg   186(2) <-    47] 
+   k u b e <- k         : 
+   k u c e <- k         : 
+  k u ch e <- k         : 
+   k u d e <- k         : 
+   k u j e <- k         : 
+   k u k e <- k         : 
+   k u l e <- k         : 
+   k u r e <- k         : 
+   k u t e <- k         : 
+  k u th e <- k         : 
+k uer SIL e <- k         : [mx   177(0) +=    45] [mg   177(0) <-    45] [mx   184(2) +=    47] [mg   184(2) <-    47] 
+ k uer b e <- k         : 
+ k uer c e <- k         : 
+k uer ch e <- k         : 
+ k uer d e <- k         : 
+ k uer j e <- k         : 
+ k uer k e <- k         : 
+ k uer l e <- k         : 
+ k uer r e <- k         : 
+ k uer t e <- k         : 
+k uer th e <- k         : 
+l SIL ee b <- l         : [mx   188(0) +=    48] [mg   188(0) <-    48] [mx   191(1) +=    49] [mg   191(1) <-    49] [mx   197(2) +=    50] [mg   197(2) <-    50] 
+l SIL oeur b <- l         : [mx   187(0) +=    48] [mg   187(0) <-    48] [mx   198(2) +=    50] [mg   198(2) <-    50] 
+l SIL uer b <- l         : [mx   196(2) +=    50] [mg   196(2) <-    50] 
+  l h ee b <- l         : 
+l h oeur b <- l         : 
+ l h uer b <- l         : 
+  l j ee b <- l         : 
+l j oeur b <- l         : 
+ l j uer b <- l         : 
+  l k ee b <- l         : 
+l k oeur b <- l         : 
+ l k uer b <- l         : 
+  l m ee b <- l         : 
+l m oeur b <- l         : 
+  l m or i <- l         : [mx   190(0) +=    48] [mg   190(0) <-    48] [mx   193(1) +=    49] [mg   193(1) <-    49] [mx   195(2) +=    50] [mg   195(2) <-    50] 
+ l m uer b <- l         : 
+  l n ee b <- l         : 
+l n oeur b <- l         : 
+ l n uer b <- l         : 
+ l ng ee b <- l         : 
+l ng oeur b <- l         : 
+l ng uer b <- l         : 
+ l nh ee b <- l         : 
+l nh oeur b <- l         : 
+l nh uer b <- l         : 
+ l or ok i <- l         : [mx   189(0) +=    48] [mg   189(0) <-    48] [mx   192(1) +=    49] [mg   192(1) <-    49] [mx   194(2) +=    50] [mg   194(2) <-    50] 
+  l p ee b <- l         : 
+l p oeur b <- l         : 
+ l p uer b <- l         : 
+  l t ee b <- l         : 
+l t oeur b <- l         : 
+ l t uer b <- l         : 
+ m a SIL e <- m         : [mx   201(0) +=    51] [mg   201(0) <-    51] [mx   202(1) +=    52] [mg   202(1) <-    52] [mx   207(2) +=    53] [mg   207(2) <-    53] 
+   m a b e <- m         : 
+   m a c e <- m         : 
+  m a ch e <- m         : 
+   m a d e <- m         : 
+   m a j e <- m         : 
+   m a k e <- m         : 
+   m a l e <- m         : 
+   m a r e <- m         : 
+   m a t e <- m         : 
+  m a th e <- m         : 
+  m av u i <- m         : [mx   200(0) +=    51] [mg   200(0) <-    51] [mx   204(1) +=    52] [mg   204(1) <-    52] [mx   206(2) +=    53] [mg   206(2) <-    53] 
+   m u l i <- m         : [mx   199(0) +=    51] [mg   199(0) <-    51] [mx   203(1) +=    52] [mg   203(1) <-    52] [mx   205(2) +=    53] [mg   205(2) <-    53] 
+n oeur SIL e <- n         : [mx   209(0) +=    54] [mg   209(0) <-    54] [mx   211(1) +=    55] [mg   211(1) <-    55] [mx   213(2) +=    56] [mg   213(2) <-    56] 
+n oeur b e <- n         : 
+n oeur c e <- n         : 
+n oeur ch e <- n         : 
+n oeur d e <- n         : 
+n oeur j e <- n         : 
+n oeur k e <- n         : 
+n oeur l e <- n         : 
+n oeur r e <- n         : 
+n oeur t e <- n         : 
+n oeur th e <- n         : 
+  n ok t i <- n         : [mx   208(0) +=    54] [mg   208(0) <-    54] [mx   210(1) +=    55] [mg   210(1) <-    55] [mx   212(2) +=    56] [mg   212(2) <-    56] 
+ng or SIL e <- ng        : [mx   214(0) +=    57] [mg   214(0) <-    57] [mx   215(1) +=    58] [mg   215(1) <-    58] [mx   216(2) +=    59] [mg   216(2) <-    59] 
+ ng or b e <- ng        : 
+ ng or c e <- ng        : 
+ng or ch e <- ng        : 
+ ng or d e <- ng        : 
+ ng or j e <- ng        : 
+ ng or k e <- ng        : 
+ ng or l e <- ng        : 
+ ng or r e <- ng        : 
+ ng or t e <- ng        : 
+ng or th e <- ng        : 
+nh ee SIL e <- nh        : [mx   217(0) +=    60] [mg   217(0) <-    60] [mx   218(1) +=    61] [mg   218(1) <-    61] [mx   219(2) +=    62] [mg   219(2) <-    62] 
+ nh ee b e <- nh        : 
+ nh ee c e <- nh        : 
+nh ee ch e <- nh        : 
+ nh ee d e <- nh        : 
+ nh ee j e <- nh        : 
+ nh ee k e <- nh        : 
+ nh ee l e <- nh        : 
+ nh ee r e <- nh        : 
+ nh ee t e <- nh        : 
+nh ee th e <- nh        : 
+   o c h i <- o         : [mx   220(0) +=    63] [mg   220(0) <-    63] [mx   221(1) +=    64] [mg   221(1) <-    64] [mx   222(2) +=    65] [mg   222(2) <-    65] 
+ oar t p i <- oar       : [mx   223(0) +=    66] [mg   223(0) <-    66] [mx   224(1) +=    67] [mg   224(1) <-    67] [mx   225(2) +=    68] [mg   225(2) <-    68] 
+ oeu b k i <- oeu       : [mx   226(0) +=    69] [mg   226(0) <-    69] [mx   227(1) +=    70] [mg   227(1) <-    70] [mx   228(2) +=    71] [mg   228(2) <-    71] 
+oeur l n i <- oeur      : [mx   229(0) +=    72] [mg   229(0) <-    72] [mx   230(1) +=    73] [mg   230(1) <-    73] [mx   231(2) +=    74] [mg   231(2) <-    74] 
+  ok b n i <- ok        : [mx   232(0) +=    75] [mg   232(0) <-    75] [mx   236(1) +=    76] [mg   236(1) <-    76] [mx   237(2) +=    77] [mg   237(2) <-    77] 
+  ok b t i <- ok        : [mx   234(1) +=    76] [mg   234(1) <-    76] [mx   238(2) +=    77] [mg   238(2) <-    77] 
+  ok l p i <- ok        : [mx   233(0) +=    75] [mg   233(0) <-    75] [mx   235(1) +=    76] [mg   235(1) <-    76] [mx   239(2) +=    77] [mg   239(2) <-    77] 
+ or l ng i <- or        : [mx   242(0) +=    78] [mg   242(0) <-    78] [mx   245(1) +=    79] [mg   245(1) <-    79] [mx   247(2) +=    80] [mg   247(2) <-    80] 
+  or r l i <- or        : [mx   240(0) +=    78] [mg   240(0) <-    78] [mx   243(1) +=    79] [mg   243(1) <-    79] [mx   246(2) +=    80] [mg   246(2) <-    80] 
+ or th j i <- or        : [mx   241(0) +=    78] [mg   241(0) <-    78] [mx   244(1) +=    79] [mg   244(1) <-    79] [mx   248(2) +=    80] [mg   248(2) <-    80] 
+p ak SIL e <- p         : [mx   250(0) +=    81] [mg   250(0) <-    81] [mx   252(1) +=    82] [mg   252(1) <-    82] [mx   254(2) +=    83] [mg   254(2) <-    83] 
+  p ak b e <- p         : 
+  p ak c e <- p         : 
+ p ak ch e <- p         : 
+  p ak d e <- p         : 
+  p ak j e <- p         : 
+  p ak k e <- p         : 
+  p ak l e <- p         : 
+  p ak r e <- p         : 
+  p ak t e <- p         : 
+ p ak th e <- p         : 
+p oar SIL e <- p         : [mx   251(0) +=    81] [mg   251(0) <-    81] [mx   255(2) +=    83] [mg   255(2) <-    83] 
+ p oar b e <- p         : 
+ p oar c e <- p         : 
+p oar ch e <- p         : 
+ p oar d e <- p         : 
+ p oar j e <- p         : 
+ p oar k e <- p         : 
+ p oar l e <- p         : 
+ p oar r e <- p         : 
+ p oar t e <- p         : 
+p oar th e <- p         : 
+  p ok k i <- p         : [mx   249(0) +=    81] [mg   249(0) <-    81] [mx   253(1) +=    82] [mg   253(1) <-    82] [mx   256(2) +=    83] [mg   256(2) <-    83] 
+ p u SIL e <- p         : 
+   p u b e <- p         : 
+   p u c e <- p         : 
+  p u ch e <- p         : 
+   p u d e <- p         : 
+   p u j e <- p         : 
+   p u k e <- p         : 
+   p u l e <- p         : 
+   p u r e <- p         : 
+   p u t e <- p         : 
+  p u th e <- p         : 
+ r SIL u b <- r         : [mx   259(0) +=    84] [mg   259(0) <-    84] [mx   261(1) +=    85] [mg   261(1) <-    85] [mx   265(2) +=    86] [mg   265(2) <-    86] 
+   r h u b <- r         : 
+   r j u b <- r         : 
+  r k ao i <- r         : [mx   258(0) +=    84] [mg   258(0) <-    84] [mx   262(1) +=    85] [mg   262(1) <-    85] [mx   263(2) +=    86] [mg   263(2) <-    86] 
+   r k u b <- r         : 
+   r m u b <- r         : 
+   r n u b <- r         : 
+  r ng u b <- r         : 
+  r nh u b <- r         : 
+   r p u b <- r         : 
+  r t or i <- r         : [mx   257(0) +=    84] [mg   257(0) <-    84] [mx   260(1) +=    85] [mg   260(1) <-    85] [mx   264(2) +=    86] [mg   264(2) <-    86] 
+   r t u b <- r         : 
+  s av d i <- s         : [mx   267(0) +=    87] [mg   267(0) <-    87] [mx   268(1) +=    88] [mg   268(1) <-    88] [mx   269(2) +=    89] [mg   269(2) <-    89] 
+   s t d i <- s         : [mx   266(0) +=    87] [mg   266(0) <-    87] 
+t SIL av b <- t         : [mx   271(0) +=    90] [mg   271(0) <-    90] [mx   277(1) +=    91] [mg   277(1) <-    91] [mx   281(2) +=    92] [mg   281(2) <-    92] 
+ t SIL r b <- t         : [mx   273(0) +=    90] [mg   273(0) <-    90] 
+ t e SIL e <- t         : [mx   274(0) +=    90] [mg   274(0) <-    90] [mx   280(1) +=    91] [mg   280(1) <-    91] [mx   285(2) +=    92] [mg   285(2) <-    92] 
+   t e b e <- t         : 
+   t e c e <- t         : 
+  t e ch e <- t         : 
+   t e d e <- t         : 
+   t e j e <- t         : [mx   270(0) +=    90] [mg   270(0) <-    90] 
+   t e k e <- t         : 
+   t e l e <- t         : 
+   t e r e <- t         : 
+   t e t e <- t         : 
+  t e th e <- t         : 
+t eu SIL e <- t         : [mx   275(0) +=    90] [mg   275(0) <-    90] [mx   286(2) +=    92] [mg   286(2) <-    92] 
+  t eu b e <- t         : 
+  t eu c e <- t         : 
+ t eu ch e <- t         : 
+  t eu d e <- t         : 
+  t eu j e <- t         : 
+  t eu k e <- t         : 
+  t eu l e <- t         : 
+  t eu r e <- t         : 
+  t eu t e <- t         : 
+ t eu th e <- t         : 
+  t h av b <- t         : 
+   t h r b <- t         : 
+  t j av b <- t         : 
+   t j r b <- t         : 
+  t k av b <- t         : 
+   t k r b <- t         : 
+  t m av b <- t         : 
+   t m r b <- t         : 
+  t n av b <- t         : 
+ t n oar i <- t         : [mx   278(1) +=    91] [mg   278(1) <-    91] [mx   282(2) +=    92] [mg   282(2) <-    92] 
+   t n r b <- t         : 
+ t ng av b <- t         : 
+  t ng r b <- t         : 
+ t nh av b <- t         : 
+  t nh r b <- t         : 
+ t ok ch i <- t         : [mx   272(0) +=    90] [mg   272(0) <-    90] [mx   279(1) +=    91] [mg   279(1) <-    91] [mx   283(2) +=    92] [mg   283(2) <-    92] 
+  t ok s i <- t         : [mx   276(0) +=    90] [mg   276(0) <-    90] [mx   284(2) +=    92] [mg   284(2) <-    92] 
+  t p av b <- t         : 
+   t p r b <- t         : 
+  t t av b <- t         : 
+   t t r b <- t         : 
+th SIL or b <- th        : [mx   287(0) +=    93] [mg   287(0) <-    93] [mx   288(1) +=    94] [mg   288(1) <-    94] [mx   289(2) +=    95] [mg   289(2) <-    95] 
+ th h or b <- th        : 
+ th j or b <- th        : 
+ th k or b <- th        : 
+ th m or b <- th        : 
+ th n or b <- th        : 
+th ng or b <- th        : 
+th nh or b <- th        : 
+ th p or b <- th        : 
+ th t or b <- th        : 
+  u ch p i <- u         : [mx   291(0) +=    96] [mg   291(0) <-    96] [mx   293(1) +=    97] [mg   293(1) <-    97] [mx   296(2) +=    98] [mg   296(2) <-    98] 
+   u m k i <- u         : [mx   292(0) +=    96] [mg   292(0) <-    96] [mx   294(1) +=    97] [mg   294(1) <-    97] [mx   297(2) +=    98] [mg   297(2) <-    98] 
+   u r m i <- u         : [mx   290(0) +=    96] [mg   290(0) <-    96] [mx   295(1) +=    97] [mg   295(1) <-    97] [mx   298(2) +=    98] [mg   298(2) <-    98] 
+ uer l k i <- uer       : [mx   299(0) +=    99] [mg   299(0) <-    99] [mx   300(1) +=   100] [mg   300(1) <-   100] [mx   301(2) +=   101] [mg   301(2) <-   101] 
+ v ch ee i <- v         : INFO: main.c(529): Writing dest /Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/model_parameters/iot.cd_cont_initial/transition_matrices
+INFO: s3tmat_io.c(176): Wrote /Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/model_parameters/iot.cd_cont_initial/transition_matrices [35x3x4 array]
+INFO: main.c(540): Writing dest /Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/model_parameters/iot.cd_cont_initial/mixture_weights
+INFO: s3mixw_io.c(233): Wrote /Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/model_parameters/iot.cd_cont_initial/mixture_weights [305x1x1 array]
+INFO: main.c(549): Writing dest /Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/model_parameters/iot.cd_cont_initial/means
+INFO: s3gau_io.c(228): Wrote /Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/model_parameters/iot.cd_cont_initial/means [305x1x1 array]
+INFO: main.c(561): Writing dest /Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/model_parameters/iot.cd_cont_initial/variances
+INFO: s3gau_io.c(228): Wrote /Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/model_parameters/iot.cd_cont_initial/variances [305x1x1 array]
+[mx   302(0) +=   102] [mg   302(0) <-   102] [mx   303(1) +=   103] [mg   303(1) <-   103] [mx   304(2) +=   104] [mg   304(2) <-   104] 
+Mon Jun 29 00:04:02 2020

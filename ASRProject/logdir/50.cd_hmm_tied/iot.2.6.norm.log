@@ -1,0 +1,34 @@
+Current configuration:
+[NAME]		[DEFLT]	[VALUE]
+-accumdir		/Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/bwaccumdir/iot_buff_1,
+-constE		3.0	3.000000e+00
+-dcountfn		
+-example	no	no
+-fullvar	no	no
+-help		no	no
+-inmeanfn		
+-inmixwfn		
+-invarfn		
+-meanfn			/Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/model_parameters/iot.cd_cont_200/means
+-mixwfn			/Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/model_parameters/iot.cd_cont_200/mixture_weights
+-mmie		no	no
+-oaccumdir		
+-regmatfn		
+-tiedvar	no	no
+-tmatfn			/Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/model_parameters/iot.cd_cont_200/transition_matrices
+-varfn			/Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/model_parameters/iot.cd_cont_200/variances
+
+INFO: main.c(207): Reading and accumulating counts from /Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/bwaccumdir/iot_buff_1
+INFO: s3mixw_io.c(117): Read /Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/bwaccumdir/iot_buff_1/mixw_counts [305x1x2 array]
+INFO: s3tmat_io.c(118): Read /Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/bwaccumdir/iot_buff_1/tmat_counts [35x3x4 array]
+INFO: s3gau_io.c(386): Read /Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/bwaccumdir/iot_buff_1/gauden_counts with means with vars (2pass) [305x1x2 vector arrays]
+INFO: main.c(321): -2passvar yes
+INFO: main.c(391): Normalizing mean for n_mgau= 305, n_stream= 1, n_density= 2
+INFO: main.c(414): Normalizing var
+INFO: s3mixw_io.c(233): Wrote /Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/model_parameters/iot.cd_cont_200/mixture_weights [305x1x2 array]
+INFO: s3tmat_io.c(176): Wrote /Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/model_parameters/iot.cd_cont_200/transition_matrices [35x3x4 array]
+INFO: s3gau_io.c(228): Wrote /Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/model_parameters/iot.cd_cont_200/means [305x1x2 array]
+INFO: s3gau_io.c(228): Wrote /Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/model_parameters/iot.cd_cont_200/variances [305x1x2 array]
+Mon Jun 29 00:04:33 2020
+Current Overall Likelihood Per Frame = -141.297055086498
+Convergence ratio = 0.116495876219091

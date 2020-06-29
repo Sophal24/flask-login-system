@@ -1,0 +1,24 @@
+Current configuration:
+[NAME]		[DEFLT]	[VALUE]
+-example	no	no
+-help		no	no
+-mixwfn			/Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/model_parameters/iot.ci_cont_flatinitial/mixture_weights
+-moddeffn		/Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/model_architecture/iot.ci.mdef
+-ndensity	256	1
+-nstream	4	1
+-tmatfn			/Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/model_parameters/iot.ci_cont_flatinitial/transition_matrices
+-topo			/Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/model_architecture/iot.topology
+
+INFO: model_def_io.c(573): Model definition info:
+INFO: model_def_io.c(574): 35 total models defined (35 base, 0 tri)
+INFO: model_def_io.c(575): 140 total states
+INFO: model_def_io.c(576): 105 total tied states
+INFO: model_def_io.c(577): 105 total tied CI states
+INFO: model_def_io.c(578): 35 total tied transition matrices
+INFO: model_def_io.c(579): 4 max state/model
+INFO: model_def_io.c(580): 4 min state/model
+INFO: s3tmat_io.c(176): Wrote /Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/model_parameters/iot.ci_cont_flatinitial/transition_matrices [35x3x4 array]
+INFO: s3mixw_io.c(233): Wrote /Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/model_parameters/iot.ci_cont_flatinitial/mixture_weights [105x1x1 array]
+main.c(83): Reading model definition file /Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/model_architecture/iot.ci.mdef
+main.c(90): 35 models defined
+Mon Jun 29 00:03:12 2020

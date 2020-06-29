@@ -1,0 +1,113 @@
+Current configuration:
+[NAME]		[DEFLT]	[VALUE]
+-allphones	no	no
+-cntthresh	0.00001	1.000000e-05
+-csplitmax	100	2000
+-csplitmin	1	1
+-csplitthr	8e-4	0.000000e+00
+-example	no	no
+-fullvar	no	no
+-help		no	no
+-meanfn			/Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/model_parameters/iot.cd_cont_untied/means
+-mixwfn			/Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/model_parameters/iot.cd_cont_untied/mixture_weights
+-moddeffn		/Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/model_architecture/iot.untied.mdef
+-mwfloor	1e-4	1.000000e-08
+-phone			k
+-psetfn			/Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/model_architecture/iot.tree_questions
+-ssplitmax	5	7
+-ssplitmin	1	1
+-ssplitthr	8e-4	0.000000e+00
+-state			0
+-stwt			1.0,0.05,0.0,
+-treefn			/Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/trees/iot.unpruned/k-0.dtree
+-ts2cbfn	.semi.	.cont.
+-varfloor	0.00001	1.000000e-05
+-varfn			/Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/model_parameters/iot.cd_cont_untied/variances
+
+INFO: main.c(223): Reading: /Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/model_architecture/iot.untied.mdef
+INFO: model_def_io.c(573): Model definition info:
+INFO: model_def_io.c(574): 112 total models defined (35 base, 77 tri)
+INFO: model_def_io.c(575): 448 total states
+INFO: model_def_io.c(576): 336 total tied states
+INFO: model_def_io.c(577): 105 total tied CI states
+INFO: model_def_io.c(578): 35 total tied transition matrices
+INFO: model_def_io.c(579): 4 max state/model
+INFO: model_def_io.c(580): 4 min state/model
+INFO: main.c(242): Building trees for [k SIL r b] through [k uer SIL e]
+INFO: main.c(269): Covering states |[186 203]| == 18
+INFO: main.c(275): Reading: /Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/model_parameters/iot.cd_cont_untied/mixture_weights
+INFO: s3mixw_io.c(173): Read /Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/model_parameters/iot.cd_cont_untied/mixture_weights [18x1x1 array]
+INFO: main.c(311): 6 of 6 models have observation count greater than 0.000010
+INFO: main.c(95): nrm stwt: 0.952 0.048 0.000 
+INFO: s3gau_io.c(169): Read /Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/model_parameters/iot.cd_cont_untied/means [336x1x1 array]
+INFO: s3gau_io.c(169): Read /Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/model_parameters/iot.cd_cont_untied/variances [336x1x1 array]
+INFO: main.c(549): Reading: /Volumes/HDD/WEB/Flask/building_user_login_system/finish/ASRProject/model_architecture/iot.tree_questions
+INFO: main.c(588): 180 total simple questions (172 phone; 8 word bndry)
+INFO: main.c(590): 42 Left Only questions, and 42 Right Only questions
+INFO: dtree.c(1439): stop. leaf nodes are specific
+INFO: dtree.c(1478): Final simple tree
+|( WDBNDRY_E 0 -3.833e+05 5.672e+03 1.714e+03
+|    ( QUESTION1 -1 -2.021e+05 2.254e+03 9.027e+02
+|        ( - -5.891e+04 1 0)
+|        ( QUESTION10 -1 -1.410e+05 7.576e+02 6.383e+02
+|            ( - -7.497e+04 1 0)
+|            ( - -6.523e+04 1 0)))
+|    ( WDBNDRY_B 0 -1.755e+05 1.260e+03 8.109e+02
+|        ( - -7.624e+04 1 0)
+|        ( QUESTION15 -1 -9.798e+04 7.741e+02 4.422e+02
+|            ( - -4.323e+04 1 0)
+|            ( - -5.397e+04 1 0))))
+s>    ( WDBNDRY_E 0 -3.833e+05 5.672e+03 1.714e+03
+s>        ( QUESTION1 -1 -2.021e+05 2.254e+03 9.027e+02
+s>            ( - -5.891e+04 1 0)
+s>            ( QUESTION10 -1 -1.410e+05 7.576e+02 6.383e+02
+s>                ( - -7.497e+04 1 0)
+s>                ( - -6.523e+04 1 0)))
+s>        ( WDBNDRY_B 0 -1.755e+05 1.260e+03 8.109e+02
+s>            ( - -7.624e+04 1 0)
+s>            ( QUESTION15 -1 -9.798e+04 7.741e+02 4.422e+02
+s>                ( - -4.323e+04 1 0)
+s>                ( - -5.397e+04 1 0))))INFO: dtree.c(1315): Comp split 0
+INFO: dtree.c(1439): stop. leaf nodes are specific
+INFO: dtree.c(1478): Final simple tree
+|( WDBNDRY_B 0 -1.755e+05 1.260e+03 8.109e+02
+|    ( - -7.624e+04 1 0)
+|    ( QUESTION15 -1 -9.798e+04 7.741e+02 4.422e+02
+|        ( - -4.323e+04 1 0)
+|        ( - -5.397e+04 1 0)))
+s>    ( WDBNDRY_B 0 -1.755e+05 1.260e+03 8.109e+02
+s>        ( - -7.624e+04 1 0)
+s>        ( QUESTION15 -1 -9.798e+04 7.741e+02 4.422e+02
+s>            ( - -4.323e+04 1 0)
+s>            ( - -5.397e+04 1 0)))INFO: dtree.c(1439): stop. leaf nodes are specific
+INFO: dtree.c(1478): Final simple tree
+|( QUESTION1 -1 -2.021e+05 2.254e+03 9.027e+02
+|    ( - -5.891e+04 1 0)
+|    ( QUESTION10 -1 -1.410e+05 7.576e+02 6.383e+02
+|        ( - -7.497e+04 1 0)
+|        ( - -6.523e+04 1 0)))
+s>    ( QUESTION1 -1 -2.021e+05 2.254e+03 9.027e+02
+s>        ( - -5.891e+04 1 0)
+s>        ( QUESTION10 -1 -1.410e+05 7.576e+02 6.383e+02
+s>            ( - -7.497e+04 1 0)
+s>            ( - -6.523e+04 1 0)))INFO: dtree.c(1315): Comp split 1
+INFO: dtree.c(1439): stop. leaf nodes are specific
+INFO: dtree.c(1478): Final simple tree
+|( QUESTION10 -1 -1.410e+05 7.576e+02 6.383e+02
+|    ( - -7.497e+04 1 0)
+|    ( - -6.523e+04 1 0))
+s>    ( QUESTION10 -1 -1.410e+05 7.576e+02 6.383e+02
+s>        ( - -7.497e+04 1 0)
+s>        ( - -6.523e+04 1 0))INFO: dtree.c(1315): Comp split 2
+INFO: dtree.c(1439): stop. leaf nodes are specific
+INFO: dtree.c(1478): Final simple tree
+|( QUESTION15 -1 -9.798e+04 7.741e+02 4.422e+02
+|    ( - -4.323e+04 1 0)
+|    ( - -5.397e+04 1 0))
+s>    ( QUESTION15 -1 -9.798e+04 7.741e+02 4.422e+02
+s>        ( - -4.323e+04 1 0)
+s>        ( - -5.397e+04 1 0))INFO: dtree.c(1315): Comp split 3
+INFO: dtree.c(1315): Comp split 4
+INFO: dtree.c(1315): Comp split 5
+INFO: dtree.c(1318): stop. leaf nodes are specific
+Mon Jun 29 00:03:57 2020
