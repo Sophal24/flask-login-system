@@ -16,6 +16,11 @@ import base64
 
 from base64 import b64encode
 
+from pocketsphinx import AudioFile
+
+
+from base64 import b64encode
+
 from werkzeug.utils import secure_filename
 UPLOAD_FOLDER = '/Volumes/HDD/WEB/Flask/building_user_login_system/finish/static/sound'
 ALLOWED_EXTENSIONS = {'wav','mp3'}
@@ -245,6 +250,7 @@ def allowed_file(filename):
     return '.' in filename and \
            filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
+<<<<<<< HEAD
 # Function Delete file from database.
 @app.route('/voicedelete/<int:id>')
 @login_required
@@ -258,6 +264,8 @@ def voicedelete(id):
     except:
         flash("There was a problem delete lexicon !!!","warning")
         return redirect(url_for('speech'))
+=======
+>>>>>>> e66097cf2560a757d7a45898615c6fbdac1a027f
 
 # function to upload file into a folder 
 @app.route('/upload', methods=['GET', 'POST'])
@@ -304,6 +312,7 @@ def uploadapi():
             filename = secure_filename(file.filename)
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
             # return redirect(url_for('uploaded_file', filename=filename))
+<<<<<<< HEAD
             # config = {
             #     'verbose' : False,
             #     'logfn' : '/dev/null' or 'nul',
@@ -324,9 +333,53 @@ def uploadapi():
             #     pass
 
             return jsonify(message="File Saved Successfully.",result="ទៅមុខ", statusMessage="Success", status="200"), 200
+=======
+            config = {
+                'verbose' : False,
+                'logfn' : '/dev/null' or 'nul',
+                'audio_file' : 'tovmok.wav',
+                'audio_device' : None,
+                'sampling_rate' : 16000,
+                'buffer_size' : 2048,
+                'no_search' : False,
+                'full_utt' : False,
+                'hmm' : 'ASRProject/model_parameters/iot.ci_cont',
+                'lm' : 'ASRProject/etc/iot.lm.DMP',
+                'dict' : 'ASRProject/etc/iot.dic',
+            }
+
+            audio = AudioFile(**config)
+            for phrase in audio:
+                word = phrase
+                pass
+
+            return jsonify(message="File Saved Successfully.",result=word, status="200"), 200
+>>>>>>> e66097cf2560a757d7a45898615c6fbdac1a027f
 
         else:
             return jsonify(message="File Extesion is not allowed.", statusMessage="Error", status="404"), 404
+
+
+# decode voice file into khmer text
+@app.route('/phone')
+def phone():
+    config = {
+        'verbose' : False,
+        'logfn' : '/dev/null' or 'nul',
+        'audio_file' : 'tovmok.wav',
+        'audio_device' : None,
+        'sampling_rate' : 16000,
+        'buffer_size' : 2048,
+        'no_search' : False,
+        'full_utt' : False,
+        'hmm' : 'ASRProject/model_parameters/iot.ci_cont',
+        'lm' : 'ASRProject/etc/iot.lm.DMP',
+        'dict' : 'ASRProject/etc/iot.dic',
+    }
+
+    audio = AudioFile(**config)
+    for phrase in audio:
+        print(phrase)
 
 
 # decode voice file into khmer text
@@ -375,7 +428,11 @@ def login():
                 login_user(user, remember=form.remember.data)
                 return redirect(url_for('dashboard'))
 
+<<<<<<< HEAD
         flash("Invalid Username or Password.","danger")
+=======
+        return '<h1>Invalid username or password</h1>'
+>>>>>>> e66097cf2560a757d7a45898615c6fbdac1a027f
 
     return render_template('login.html', form=form, login=True)
 
@@ -448,8 +505,12 @@ def language():
 def speech():
     # voice = VoiceFile.query.all()
     voice = VoiceFile.query.all()
+<<<<<<< HEAD
     count = VoiceFile.query.count()
     return render_template('speech.html', speech=True, voice=voice, count=count)
+=======
+    return render_template('speech.html', speech=True, voice=voice)
+>>>>>>> e66097cf2560a757d7a45898615c6fbdac1a027f
 
 
 @app.route('/decoding')
