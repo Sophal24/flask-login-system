@@ -5,10 +5,27 @@
 {{super()}}
 <link rel="stylesheet" href="{{url_for('.static', filename='signin.css')}}">
 <script src="https://kit.fontawesome.com/ef323b5b2a.js" crossorigin="anonymous"></script>
+<link rel="icon" href="{{ url_for('static', filename='iot.jpg') }}">
 {% endblock %}
 
 {% block content %}
     {% include "includes/nav.html" %}
+    <div class="container" style="margin-top: 25px; text-align: center;">
+      {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        {% for category, message in messages %}
+          <div class="alert alert-{{category}} alert-dismissible fade show" role="alert" style="height: 50px; margin-top: -25px;">
+            <h5>{{ message }}</h5>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+
+        {% endfor %}
+      {% endif %}
+      {% endwith %}
+    </div>
+    
     
     <div class="container">
       <form class="form-signin" method="POST" action="/login">
@@ -17,7 +34,7 @@
         {{ form.hidden_tag() }}
         {{ wtf.form_field(form.username) }}
         {{ wtf.form_field(form.password) }}
-        {{ wtf.form_field(form.remember) }}
+        {{ wtf.form_field(form.remember) }} 
         <button class="btn btn-lg btn-warning" type="submit" style="margin-top: 15px;">Log in</button>
         <br>
       </form>

@@ -8,6 +8,7 @@ Home
 {{super()}}
 <link rel="stylesheet" href="{{url_for('.static', filename='starter-template.css')}}">
 <script src="https://kit.fontawesome.com/ef323b5b2a.js" crossorigin="anonymous"></script>
+<link rel="icon" href="{{ url_for('static', filename='iot.jpg') }}">
 {% endblock %}
 
 {% block content %}
@@ -30,11 +31,12 @@ Home
         {% if current_user.is_authenticated %}
         <h1 style="color: coral;">Welcome To</h1>
         <h1>Khmer ASR for IoT Devices</h1>
-        <p class="lead">This project was set by NIPTICT.<br>By Senior Students - Year 3.</p>
+        <p class="lead">This project was set by NIPTICT<br>By Senior Students - Final Year.</p>
         {% else %}
         <h1 style="color: coral;">Welcome To</h1>
         <h1>Khmer ASR for IoT Devices</h1>
-        <p class="lead">This project was set by NIPTICT.<br>By Senior Students - Year 3.</p>
+        <h2>Web Admin</h2>
+        <p class="lead">This project was set by NIPTICT<br>By Senior Students - Final Year.</p>
         <a href="{{ url_for('login') }}">
           <button type="button" class="btn btn-warning btn-lg"><i class="fas fa-sign-in-alt"></i> Login</button>
         </a>

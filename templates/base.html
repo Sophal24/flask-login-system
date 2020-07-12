@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %} {% endblock %}</title>
 
+
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
@@ -27,8 +28,8 @@
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
 
-
-
+    <!-- tab icon -->
+    <link rel="icon" href="{{ url_for('static', filename='iot.jpg') }}">
 
 
     <style type="text/css">
@@ -38,11 +39,20 @@
         .overview-icon:hover{
             color: #FDC109;
         }
+
+        /* .topicname{
+            position: -webkit-sticky;
+            position: sticky;
+            top: 0;
+            background-color: #F8F9FA;
+            font-size: 20px;
+            box-shadow: 1px 1px 1px #aaaaaa;
+        } */
     </style>
 
 </head>
 <body>
-    <div class="wrapper">
+    <div class="wrapper" >
         <!-- Sidebar  -->
         <nav id="sidebar" >
             <div class="sidebar-header">
@@ -94,12 +104,12 @@
 
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="nav navbar-nav ml-auto">
-                            <li class="nav-item">
+                            <!-- <li class="nav-item">
                                 <a class="nav-link" href="#">Setting</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="#">Profile</a>
-                            </li>
+                            </li> -->
                             <li class="nav-item">
                                 <!-- <a class="nav-link" href="#">Logout</a> -->
                                 <a href="{{ url_for('logout') }}" class="nav-link"><i class="fas fa-sign-out-alt"></i> Log Out</a>

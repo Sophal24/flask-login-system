@@ -10,17 +10,22 @@ from flask_sqlalchemy  import SQLAlchemy
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user, current_user
 from io import BytesIO # help to downlaod file
+from pocketsphinx import AudioFile
+import base64
+
+
+from base64 import b64encode
 
 from werkzeug.utils import secure_filename
 UPLOAD_FOLDER = '/Volumes/HDD/WEB/Flask/building_user_login_system/finish/static/sound'
-# ALLOWED_EXTENSIONS = {'wav','mp3'}
-ALLOWED_EXTENSIONS = {'txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif', 'wav','mp3'}
+ALLOWED_EXTENSIONS = {'wav','mp3'}
+# ALLOWED_EXTENSIONS = {'txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif', 'wav','mp3'}
 
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'Thisissupposedtobesecret!'
-# app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:24071999@localhost/prettyprinted' #posgresql+username+password=@localhost/database
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://vqfhxxncclgtkm:87c1e6539b84ba12105a17cfc6733cb2ddb9d7b902c896ca73791f6c9ab17f2d@ec2-3-91-139-25.compute-1.amazonaws.com:5432/d6mglfsgk46cmg'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:24071999@localhost/prettyprinted' #posgresql+username+password=@localhost/database
+# app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://vqfhxxncclgtkm:87c1e6539b84ba12105a17cfc6733cb2ddb9d7b902c896ca73791f6c9ab17f2d@ec2-3-91-139-25.compute-1.amazonaws.com:5432/d6mglfsgk46cmg'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS']=False
 
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
@@ -210,24 +215,51 @@ class VoiceFile(db.Model):
         self.data = data
 
 # ================ Speech management =================
-# upload voce file
+# function to upload voice file (upload into database)
 @app.route('/uploadvoice', methods=["POST"])
 @login_required
 def uploadvoice():
     file = request.files['inputFile']
-    newFile = VoiceFile(filename=file.filename, data=file.read())
-    db.session.add(newFile)
-    db.session.commit()
 
-    return "Saved" + file.filename + " to the databasebase"
-    # return jsonify(message='Audio was saved to database.'), 200
+    if file and allowed_file(file.filename):
+        newFile = VoiceFile(filename=file.filename, data=file.read())
+        db.session.add(newFile)
+        db.session.commit()
+
+        flash("File Saved Successfully.","success")
+        return redirect(url_for('speech'))
+    else:
+        flash("File Extesion is not allowed. (.wav and .mp3 only!)", "danger")
+        return redirect(url_for('speech'))
+
+    # newFile = VoiceFile(filename=file.filename, data=file.read())
+    # db.session.add(newFile)
+    # db.session.commit()
+
+    # flash("File Saved Successfully.","success")
+    # return redirect(url_for('speech'))
 
 
-
+# Check File extension
 def allowed_file(filename):
     return '.' in filename and \
            filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
+# Function Delete file from database.
+@app.route('/voicedelete/<int:id>')
+@login_required
+def voicedelete(id):
+    voiceDelete = VoiceFile.query.get_or_404(id)
+    try:
+        db.session.delete(voiceDelete)
+        db.session.commit()
+        flash("Voice was deleted successfully !!!","success")
+        return redirect(url_for('speech'))
+    except:
+        flash("There was a problem delete lexicon !!!","warning")
+        return redirect(url_for('speech'))
+
+# function to upload file into a folder 
 @app.route('/upload', methods=['GET', 'POST'])
 def upload_file():
     if request.method == 'POST':
@@ -253,27 +285,70 @@ def upload_file():
             flash("File Extesion is not allowed.", "danger")
             return redirect(url_for('speech'))
 
-## upload voice API
+## upload voice API (into folder)
 @app.route('/uploadapi', methods=['POST'])
 def uploadapi():
     if request.method == 'POST':
         # check if the post request has the file part
         if 'file' not in request.files:
-            return jsonify(message="No file part", staus="404"), 404
+            return jsonify(message="No file part", statusMessage="No Content", staus="204"), 204
         file = request.files['file']
+
+        
         # if user does not select file, browser also
         # submit an empty part without filename
         if file.filename == '':
-            return jsonify(message="No selected File.", status="404"), 404
+            return jsonify(message="No selected File.", statusMessage="Error", status="404"), 404
 
         if file and allowed_file(file.filename):
             filename = secure_filename(file.filename)
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
             # return redirect(url_for('uploaded_file', filename=filename))
-            return jsonify(message="File Saved Successfully.", status="200"), 200
+            # config = {
+            #     'verbose' : False,
+            #     'logfn' : '/dev/null' or 'nul',
+            #     'audio_file' : 'tovmok.wav',
+            #     'audio_device' : None,
+            #     'sampling_rate' : 16000,
+            #     'buffer_size' : 2048,
+            #     'no_search' : False,
+            #     'full_utt' : False,
+            #     'hmm' : 'ASRProject/model_parameters/iot.ci_cont',
+            #     'lm' : 'ASRProject/etc/iot.lm.DMP',
+            #     'dict' : 'ASRProject/etc/iot.dic',
+            # }
+
+            # audio = AudioFile(**config)
+            # for phrase in audio:
+            #     word = phrase
+            #     pass
+
+            return jsonify(message="File Saved Successfully.",result="ទៅមុខ", statusMessage="Success", status="200"), 200
 
         else:
-            return jsonify(message="File Extesion is not allowed.", status="404"), 404
+            return jsonify(message="File Extesion is not allowed.", statusMessage="Error", status="404"), 404
+
+
+# decode voice file into khmer text
+@app.route('/phone')
+def phone():
+    config = {
+        'verbose' : False,
+        'logfn' : '/dev/null' or 'nul',
+        'audio_file' : 'tovmok.wav',
+        'audio_device' : None,
+        'sampling_rate' : 16000,
+        'buffer_size' : 2048,
+        'no_search' : False,
+        'full_utt' : False,
+        'hmm' : 'ASRProject/model_parameters/iot.ci_cont',
+        'lm' : 'ASRProject/etc/iot.lm.DMP',
+        'dict' : 'ASRProject/etc/iot.dic',
+    }
+
+    audio = AudioFile(**config)
+    for phrase in audio:
+        print(phrase)
 
 
 # ==============xEnd Speech management x==============
@@ -285,6 +360,7 @@ def uploadapi():
 # @login_required
 def index():
     return render_template('index.html', home=True)
+
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -299,8 +375,7 @@ def login():
                 login_user(user, remember=form.remember.data)
                 return redirect(url_for('dashboard'))
 
-        return '<h1>Invalid username or password</h1>'
-        #return '<h1>' + form.username.data + ' ' + form.password.data + '</h1>'
+        flash("Invalid Username or Password.","danger")
 
     return render_template('login.html', form=form, login=True)
 
@@ -311,13 +386,30 @@ def signup():
         return redirect(url_for('dashboard'))
     form = RegisterForm()
     if form.validate_on_submit():
+        username = form.username.data
+        email = form.email.data
+
+        user = User.query.filter_by(username=username).first()
+        uemail = User.query.filter_by(email=email).first()
+
+        if user and uemail:
+            flash("Username and Email already exist. Please Try Again!","warning")
+            return redirect(url_for('signup'))
+        elif user:
+            flash("Username already exist. Please Try Again!","warning")
+            return redirect(url_for('signup'))
+        elif uemail:
+            flash("Email already exist. Please Try Again!","warning")
+            return redirect(url_for('signup'))
+
         hashed_password = generate_password_hash(form.password.data, method='sha256') #hash password
         new_user = User(username=form.username.data, email=form.email.data, password=hashed_password) #put all data from form in to Class User
         
         db.session.add(new_user)
         db.session.commit()
-        return redirect(url_for('dashboard'))
+        return redirect(url_for('login'))
     return render_template('signup.html', form=form, signup=True)
+
 
 @app.route('/dashboard')
 @login_required
@@ -336,7 +428,8 @@ def logout():
 @app.route('/lexicon')
 @login_required
 def lexicon():
-    lexiconall = Lexicon.query.all()
+    # lexiconall = Lexicon.query.all()
+    lexiconall = Lexicon.query.order_by(Lexicon.id.asc()).all()
     count = Lexicon.query.count()
     return render_template('lexicon.html', lexicon=True, lexiconall=lexiconall, count=count)
 
@@ -344,7 +437,8 @@ def lexicon():
 @app.route('/language')
 @login_required
 def language():
-    languageall = Language.query.all()
+    # languageall = Language.query.all()
+    languageall = Language.query.order_by(Language.id.asc()).all()
     count = Language.query.count()
     return render_template('language.html', language=True, languageall=languageall, count=count)
 
@@ -352,8 +446,10 @@ def language():
 @app.route('/speech')
 @login_required
 def speech():
-    allfile = VoiceFile.query.all()
-    return render_template('speech.html', speech=True, allfile=allfile)
+    # voice = VoiceFile.query.all()
+    voice = VoiceFile.query.all()
+    count = VoiceFile.query.count()
+    return render_template('speech.html', speech=True, voice=voice, count=count)
 
 
 @app.route('/decoding')
@@ -362,12 +458,13 @@ def decoding():
     return render_template('decoding.html', decoding=True)
 
 
-# @app.route('/base')
-# @login_required
-# def base():
-#     return render_template('base.html', decoding=True)
 
+@app.route("/show/<int:id>")
+def show(id):
+    obj = VoiceFile.query.get_or_404(id)
+    image = b64encode(obj.data).decode("utf-8")
+    return render_template("speech.html", obj=obj, image=image)
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, use_reloader=False)

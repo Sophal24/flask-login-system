@@ -20,6 +20,7 @@ Jinja2==2.11.2
 lazy-object-proxy==1.4.3
 MarkupSafe==1.1.1
 mccabe==0.6.1
+pocketsphinx==0.1.15
 psycopg2==2.8.5
 pylint==2.5.2
 python-dotenv==0.13.0
